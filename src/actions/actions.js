@@ -1,7 +1,12 @@
 let Reflux = require('reflux');
 
+import { searchYoutube } from '../modules';
+
+
 let Actions = Reflux.createActions({
-  'searchArtistApi': { asyncResult: true }
+  'searchYoutubeApi': { asyncResult: true }
 });
+
+Actions.searchYoutubeApi.listenAndPromise(searchYoutube);
 
 export default Actions;

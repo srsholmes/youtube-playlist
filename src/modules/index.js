@@ -1,13 +1,9 @@
-import searchArtist from './searchArtist';
-import getArtistBio from './getArtistBio';
-import makeArtistData from './makeArtistData';
-import getArtistImage from './getArtistImage';
+import throttle from './throttle';
 import isEmpty from './isEmpty';
+import searchYoutube from './youtubeSearchApi';
 
 export default {
-	searchArtist,
-	getArtistBio,
-	makeArtistData,
-	getArtistImage,
-	isEmpty
+	throttle,
+	isEmpty,
+	searchYoutube
 }

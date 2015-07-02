@@ -8,6 +8,11 @@ let ArtistStore = Reflux.createStore({
 
   init() {
     console.log('store init');
+  },
+
+  onSearchYoutubeApiCompleted(data) {
+  	console.log('onsearchYoutubeApiCompleted');
+  	console.log(data)
   }
 
 });

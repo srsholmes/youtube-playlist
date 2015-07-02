@@ -1,10 +1,17 @@
 let React = require('react');
 let Reflux = require('reflux');
 let Actions = require('../actions/actions');
+
+//Material UI Components 
 let mui = require('material-ui');
 let ThemeManager = new mui.Styles.ThemeManager();
 let RaisedButton = mui.RaisedButton;
 let AppBar = mui.AppBar;
+let LeftNav = mui.LeftNav;
+
+//Custom components
+import { Search } from './search';
+
 //Stores
 let Store = require('../stores/store');
 
@@ -15,7 +22,9 @@ let App = React.createClass({
   ],
 
   getInitialState() {
-    return {};
+    return {
+      menuItems:[]
+    }
   },
 
   childContextTypes: {
@@ -28,13 +37,18 @@ let App = React.createClass({
     };
   },
 
-  leftIconTouch() {
-    console.log('nav toggle clicked')
+  openLeftNav() {
+    console.log('nav toggle clicked');
+    this.refs.leftNav.toggle();
   },
 
   render(){
+    // let menuItems = [{ route: 'get-started', text: 'Get Started' }];
     return (
-      <h1>Hello App</h1>
+      <div>
+        <AppBar title='Youtube Playlist Maker' onLeftIconButtonTouchTap={this.openLeftNav} iconClassNameRight="muidocs-icon-navigation-expand-more"/>
+        <LeftNav ref="leftNav" docked={false} header={<Search/>} openRight={true} menuItems={this.state.menuItems}/>
+      </div>
     )
   }
 });
