@@ -26,7 +26,7 @@ let App = React.createClass({
 
   getInitialState() {
     return {
-      searchBarOpen: false
+      searchBarOpen: true
     };
   },
 
@@ -49,7 +49,7 @@ let App = React.createClass({
   render(){
     return (
       <div>
-        <AppBar title='Youtube Playlist Maker' onLeftIconButtonTouchTap={this.openSearchBar} iconClassNameRight="muidocs-icon-navigation-expand-more"/>
+        <AppBar style={{'backgroundColor':'#e52d27'}} title='Youtube Playlists' onLeftIconButtonTouchTap={this.openSearchBar} iconClassNameRight="muidocs-icon-navigation-expand-more"/>
         <Search open={this.state.searchBarOpen} refs='SearchBar'/>
       </div>
     )

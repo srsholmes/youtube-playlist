@@ -23,7 +23,6 @@ let Search = React.createClass({
   },
 
  	getStyles() {
- 		console.log('get styles')
 		var transformVal = this.props.open ? 0 : 100;
 		return Object.assign({}, Styles.search, {
       transform: `translate3d(${transformVal}%, 0px, 0px)`
@@ -34,7 +33,7 @@ let Search = React.createClass({
     var styles = this.getStyles();
     return (
       <div style={styles}>
-        <h3>Search youtube...</h3>
+        <h3>Search...</h3>
         <TextField hintText="Geoff Rowley" onChange={this._handleInputChange} ref="searchBar" />
         <SearchResults/>
       </div>
