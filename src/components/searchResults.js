@@ -48,4 +48,4 @@ let SearchResults = React.createClass({
   }
 });
 
-export default { SearchResults };  
+export default SearchResults;  

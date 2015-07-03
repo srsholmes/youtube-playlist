@@ -24,10 +24,11 @@ let App = React.createClass({
     Reflux.connect(Store)
   ],
 
-  getInitialState() {
+  getInitialState: function() {
     return {
-      menuItems:[]
-    }
+      liked: false,
+      SearchBarOpen: true
+    };
   },
 
   childContextTypes: {
@@ -43,15 +44,21 @@ let App = React.createClass({
   openSearchBar() {
     console.log('nav toggle clicked');
     console.log(Styles);
-    // Styles.search.transform = 'translate3d(0%, 0px, 0px)'
+    this.setState({
+      SearchBarOpen: !this.state.SearchBarOpen
+    });
   },
 
   render(){
-    // let menuItems = [{ route: 'get-started', text: 'Get Started' }];
+    var text = this.state.SearchBarOpen ? 'open' : 'not open';
+
     return (
       <div>
         <AppBar title='Youtube Playlist Maker' onLeftIconButtonTouchTap={this.openSearchBar} iconClassNameRight="muidocs-icon-navigation-expand-more"/>
-        <Search styles={Styles.search}/>
+        <Search open={this.state.SearchBarOpen} refs='SearchBar'/>
+        <p onClick={this.handleClick}>
+          Search is {text}. Click to toggle.
+        </p>
       </div>
     )
   }

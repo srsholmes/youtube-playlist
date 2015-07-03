@@ -5,7 +5,7 @@ let Actions = require('../actions/actions');
 //Modules
 import { throttle } from '../modules';
 
-import { SearchResults } from './searchresults'
+import SearchResults  from './searchResults'
 
 //Styles
 import Styles from '../styles';
@@ -22,9 +22,30 @@ let Search = React.createClass({
     throttle(Actions.searchYoutubeApi(query), 600);
   },
 
+  getStyles: function() {
+    var styles = {
+      'background' : 'green',
+      position: 'fixed',
+      right: '0',
+      width: '33%',
+      padding: '10px',
+      top: '0',
+      transition: 'all 0.3s ease-in'
+    }
+
+    if (this.props.open) {
+      styles['transform'] =  'translate3d(100%, 0px, 0px)';
+    } else {
+      styles['transform'] =  'translate3d(0%, 0px, 0px)';
+    }
+    
+    return styles
+  },
+
   render() {
+    var styles = this.getStyles();
     return (
-      <div style={this.props.styles} >
+      <div style={styles} open={this.props.open}>
         <h3>Search youtube here lad</h3>
         <TextField hintText="Geoff Rowley" onChange={this._handleInputChange} ref="searchBar" />
         <SearchResults/>
