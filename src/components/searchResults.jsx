@@ -2,7 +2,7 @@ let React = require('react');
 let Reflux = require('reflux');
 let Actions = require('../actions/actions');
 
-//Material UI Components 
+//Material UI Components
 let mui = require('material-ui');
 let ThemeManager = new mui.Styles.ThemeManager();
 let List = mui.List;
@@ -19,7 +19,7 @@ let SearchResults = React.createClass({
   ],
 
   getInitialState() {
-    return { 
+    return {
       results: {
         data: {
           items: []
@@ -28,14 +28,28 @@ let SearchResults = React.createClass({
     }
   },
 
+  getStyles() {
+ 		return {
+ 			maxHeight:'100px'
+ 		}
+ 	},
+
   render() {
+  	var styles = this.getStyles();
     let results = this.state.results.data.items;
     let resultsList = results.map(function (data, i){
       console.log(data, i);
       return (
-        <ListItem leftAvatar={<Avatar src={data.snippet.thumbnails.default.url} />}>
-          <h4>{data.snippet.title}</h4>
-          <p>{data.snippet.description}</p>
+        <ListItem style={styles}
+        	className="resultsItem"
+        	secondaryText={
+            <p>
+              {data.snippet.description}
+            </p>
+          }
+          secondaryTextLines={2}
+          leftAvatar={<Avatar src={data.snippet.thumbnails.default.url} />}>
+          {data.snippet.title}
         </ListItem>
       )
     }, this);
@@ -48,4 +62,4 @@ let SearchResults = React.createClass({
   }
 });
 
-export default SearchResults;  
+export default SearchResults;
