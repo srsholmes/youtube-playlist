@@ -2,6 +2,8 @@ let React = require('react');
 let Reflux = require('reflux');
 let Actions = require('../actions/actions');
 
+//Modules
+import { initYoutubeVideo } from '../modules';
 //Styles
 import Styles from '../styles';
 
@@ -45,6 +47,7 @@ let SearchResults = React.createClass({
  		let videoData = this.state.results.data.items[i];
  		let videoID = videoData.id.videoId;
  		console.log(videoID);
+ 		initYoutubeVideo(videoID);
  	},
 
   render() {

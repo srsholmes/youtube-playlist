@@ -10,7 +10,7 @@ let AppBar = mui.AppBar;
 
 
 //Custom components
-import { Search } from './';
+import { Search, Youtube } from './';
 
 //Styles
 import Styles from '../styles';
@@ -51,6 +51,7 @@ let App = React.createClass({
       <div>
         <AppBar style={{'backgroundColor':'#e52d27'}} title='Youtube Playlists' onLeftIconButtonTouchTap={this.openSearchBar} iconClassNameRight="muidocs-icon-navigation-expand-more"/>
         <Search open={this.state.searchBarOpen} refs='SearchBar'/>
+        <Youtube/>
       </div>
     )
   }

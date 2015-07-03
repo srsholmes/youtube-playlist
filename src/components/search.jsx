@@ -4,16 +4,14 @@ let Actions = require('../actions/actions');
 
 //Modules
 import { throttle } from '../modules';
-
-import { SearchResults } from './'
-
 //Styles
 import Styles from '../styles';
 
-//Material UI Components
+//Components
 let mui = require('material-ui');
 let ThemeManager = new mui.Styles.ThemeManager();
 let TextField = mui.TextField;
+import { SearchResults } from './'
 
 let Search = React.createClass({
   _handleInputChange() {
