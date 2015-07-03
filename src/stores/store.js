@@ -2,7 +2,7 @@ let React = require('react');
 let Reflux = require('reflux');
 let Actions = require('../actions/actions');
 
-let ArtistStore = Reflux.createStore({
+let Store = Reflux.createStore({
 
   listenables: [Actions],
 
@@ -12,9 +12,13 @@ let ArtistStore = Reflux.createStore({
 
   onSearchYoutubeApiCompleted(data) {
   	console.log('onsearchYoutubeApiCompleted');
-  	console.log(data)
+  	console.log(data.data);
+  	console.log(data.data.items);
+  	this.trigger({ 
+  		results: data 
+  	});
   }
 
 });
 
-module.exports = ArtistStore;
+module.exports = Store;
