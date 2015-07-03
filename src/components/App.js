@@ -2,7 +2,7 @@ let React = require('react');
 let Reflux = require('reflux');
 let Actions = require('../actions/actions');
 
-//Material UI Components 
+//Material UI Components
 let mui = require('material-ui');
 let ThemeManager = new mui.Styles.ThemeManager();
 let RaisedButton = mui.RaisedButton;
@@ -18,7 +18,7 @@ import Styles from '../styles';
 //Stores
 let Store = require('../stores/store');
 
-let App = React.createClass({ 
+let App = React.createClass({
 
   mixins: [
     Reflux.connect(Store)
