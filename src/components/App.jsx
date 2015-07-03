@@ -10,7 +10,7 @@ let AppBar = mui.AppBar;
 
 
 //Custom components
-import { Search } from './search';
+import { Search } from './';
 
 //Styles
 import Styles from '../styles';
@@ -56,8 +56,4 @@ let App = React.createClass({
   }
 });
 
-export function start() {
-  React.render(
-    <App />, document.body
-  );
-}
+export default App;

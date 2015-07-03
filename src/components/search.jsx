@@ -5,12 +5,12 @@ let Actions = require('../actions/actions');
 //Modules
 import { throttle } from '../modules';
 
-import SearchResults  from './searchResults'
+import { SearchResults } from './'
 
 //Styles
 import Styles from '../styles';
 
-//Material UI Components 
+//Material UI Components
 let mui = require('material-ui');
 let ThemeManager = new mui.Styles.ThemeManager();
 let TextField = mui.TextField;
@@ -37,4 +37,4 @@ let Search = React.createClass({
   }
 });
 
-export default { Search };  
+export default Search;

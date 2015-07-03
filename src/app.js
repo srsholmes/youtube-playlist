@@ -13,5 +13,6 @@ injectTapEventPlugin();
 //Needed for React Developer Tools
 window.React = React;
 
-import { start } from './components/App';
-start();
+import { App } from './components';
+
+React.render(<App/>, document.querySelector('div[app]'));
