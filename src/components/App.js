@@ -7,10 +7,13 @@ let mui = require('material-ui');
 let ThemeManager = new mui.Styles.ThemeManager();
 let RaisedButton = mui.RaisedButton;
 let AppBar = mui.AppBar;
-let LeftNav = mui.LeftNav;
+
 
 //Custom components
 import { Search } from './search';
+
+//Styles
+import Styles from '../styles';
 
 //Stores
 let Store = require('../stores/store');
@@ -37,17 +40,18 @@ let App = React.createClass({
     };
   },
 
-  openLeftNav() {
+  openSearchBar() {
     console.log('nav toggle clicked');
-    this.refs.leftNav.toggle();
+    console.log(Styles);
+    // Styles.search.transform = 'translate3d(0%, 0px, 0px)'
   },
 
   render(){
     // let menuItems = [{ route: 'get-started', text: 'Get Started' }];
     return (
       <div>
-        <AppBar title='Youtube Playlist Maker' onLeftIconButtonTouchTap={this.openLeftNav} iconClassNameRight="muidocs-icon-navigation-expand-more"/>
-        <LeftNav ref="leftNav" docked={false} header={<Search/>} openRight={true} menuItems={this.state.menuItems}/>
+        <AppBar title='Youtube Playlist Maker' onLeftIconButtonTouchTap={this.openSearchBar} iconClassNameRight="muidocs-icon-navigation-expand-more"/>
+        <Search styles={Styles.search}/>
       </div>
     )
   }

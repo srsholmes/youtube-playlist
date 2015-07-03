@@ -7,6 +7,9 @@ import { throttle } from '../modules';
 
 import { SearchResults } from './searchresults'
 
+//Styles
+import Styles from '../styles';
+
 //Material UI Components 
 let mui = require('material-ui');
 let ThemeManager = new mui.Styles.ThemeManager();
@@ -21,8 +24,8 @@ let Search = React.createClass({
 
   render() {
     return (
-      <div>
-        <h3>Please search for a video:</h3>
+      <div style={this.props.styles} >
+        <h3>Search youtube here lad</h3>
         <TextField hintText="Geoff Rowley" onChange={this._handleInputChange} ref="searchBar" />
         <SearchResults/>
       </div>

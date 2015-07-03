@@ -7,6 +7,7 @@ let mui = require('material-ui');
 let ThemeManager = new mui.Styles.ThemeManager();
 let List = mui.List;
 let ListItem = mui.ListItem;
+let Avatar = mui.Avatar;
 
 //Stores
 let Store = require('../stores/store');
@@ -30,10 +31,11 @@ let SearchResults = React.createClass({
   render() {
     let results = this.state.results.data.items;
     let resultsList = results.map(function (data, i){
+      console.log(data, i);
       return (
-        <ListItem>
-          <p>{data}</p>
-          <p>{data.snippet.item}</p>
+        <ListItem leftAvatar={<Avatar src={data.snippet.thumbnails.default.url} />}>
+          <h4>{data.snippet.title}</h4>
+          <p>{data.snippet.description}</p>
         </ListItem>
       )
     }, this);

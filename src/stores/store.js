@@ -12,8 +12,6 @@ let Store = Reflux.createStore({
 
   onSearchYoutubeApiCompleted(data) {
   	console.log('onsearchYoutubeApiCompleted');
-  	console.log(data.data);
-  	console.log(data.data.items);
   	this.trigger({ 
   		results: data 
   	});
