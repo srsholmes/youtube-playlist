@@ -1,6 +1,6 @@
 let Styles = {
 	search: {
-		'background' : 'green',
+		'background' : 'grey',
 	  position: 'fixed',
 	  right: '0',
 	  width: '33%',

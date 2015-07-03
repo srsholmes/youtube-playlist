@@ -26,7 +26,6 @@ let App = React.createClass({
 
   getInitialState() {
     return {
-      liked: false,
       searchBarOpen: false
     };
   },
