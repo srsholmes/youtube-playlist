@@ -6,7 +6,6 @@ let Actions = require('../actions/actions');
 import { initYoutubeVideo } from '../modules';
 //Styles
 import Styles from '../styles';
-
 //Stores
 let Store = require('../stores/store');
 

@@ -1,14 +1,19 @@
 export default function initYoutubeVideo(videoId) {
-	console.log('initYoutubeVideo');
+	//Do a check here, if API, then change the ID attribute
+	//of the iframe to load in the other video
 
-	var tag = document.createElement('script');
+	//Get the api.
+	let tag = document.createElement('script');
   tag.src = "https://www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
+  let firstScriptTag = document.getElementsByTagName('script')[0];
   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-  var player;
-  //Need to expose the youtube video on the window when instantiating it.
-  global.onYouTubeIframeAPIReady = function() {
+  //set up the player.
+  let player;
+  var done = false;
+
+
+  global.onYouTubeIframeAPIReady = () => {
   	console.log('onYouTubeIframeAPIReady');
     player = new YT.Player('player', {
       height: '390',
@@ -21,18 +26,20 @@ export default function initYoutubeVideo(videoId) {
     });
   }
 
-  function onPlayerReady(event) {
+  //player events
+  let onPlayerReady = (event) => {
   	console.log('onPlayerReady');
     event.target.playVideo();
   }
-  var done = false;
-  function onPlayerStateChange(event) {
+
+  let onPlayerStateChange = (event) => {
     if (event.data == YT.PlayerState.PLAYING && !done) {
       setTimeout(stopVideo, 6000);
       done = true;
     }
   }
-  function stopVideo() {
+
+  let stopVideo = () => {
     player.stopVideo();
   }
 }
