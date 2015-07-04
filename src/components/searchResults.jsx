@@ -36,6 +36,7 @@ let SearchResults = React.createClass({
  		let videoData = this.state.results.data.items[i];
  		let videoID = videoData.id.videoId;
  		initYoutubeVideo(videoID);
+ 		Actions.closeOverlay();
  	},
 
   render() {

@@ -17,8 +17,7 @@ let Store = Reflux.createStore({
   	});
   },
 
-  onOverlayClick(){
-  	console.log('on overlay click');
+  onCloseOverlay(){
   	this.trigger({
       searchBarOpen: false
     });
