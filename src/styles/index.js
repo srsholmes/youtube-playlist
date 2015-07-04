@@ -8,7 +8,21 @@ let Styles = {
 	  width: '40%',
 	  padding: '10px',
 	  top: '0',
-	  transition: 'all 0.3s ease-in'
+	  transition: 'all 0.3s ease-in',
+	  zIndex: 75
+	},
+
+	searchOverlay: {
+		background: 'black',
+		position: 'fixed',
+		height: '100%',
+		width: '100%',
+		left: 0,
+		right: 0,
+		top: 0,
+		bottom: 0,
+		zIndex: 25,
+		trasition: 'opacity .3s ease-in-out'
 	},
 
 	list: {

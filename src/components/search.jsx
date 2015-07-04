@@ -27,14 +27,27 @@ let Search = React.createClass({
     });
  	},
 
+ 	getStylesOverlay() {
+		var opacityVal = this.props.open ? 0.7 : 0;
+		return Object.assign({}, Styles.searchOverlay, {
+    	opacity: `${opacityVal}`
+    });
+ 	},
+
   render() {
     var styles = this.getStyles();
+    var stylesOverlay = this.getStylesOverlay();
     return (
-      <div style={styles}>
-        <h3>Search...</h3>
-        <TextField hintText="Geoff Rowley" onChange={this._handleInputChange} ref="searchBar" />
-        <SearchResults/>
-      </div>
+    	<div>
+	      <div style={styles} className={this.props.open ? 'search' : 'search open'}>
+	        <h3>Search...</h3>
+	        <TextField hintText="Geoff Rowley" onChange={this._handleInputChange} ref="searchBar" />
+	        <SearchResults/>
+	      </div>
+	      <div>
+	      	<div style={stylesOverlay} className={this.props.open ? 'searchOverlay' : 'searchOverlay open'}/>
+	      </div>
+	    </div>
     )
   }
 });
