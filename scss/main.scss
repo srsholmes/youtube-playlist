@@ -1,12 +1,9 @@
-* {
-    box-sizing: border-box;
-}
+//Import utils
+@import "utils/reset";
+@import "utils/fonts";
 
-html, body {
-	background: white;
-	color: black;
-	width: 100%;
-	font-family: 'Roboto', sans-serif;
-	margin: 0;
-	padding: 0;
-}
+// Global Styles which are used accross the board.
+@import "utils/global";
+
+//Components
+@import "components/search";

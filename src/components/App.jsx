@@ -40,7 +40,7 @@ let App = React.createClass({
     };
   },
 
-  openSearchBar() {
+  toggleSearchBar() {
     this.setState({
       searchBarOpen: !this.state.searchBarOpen
     });
@@ -49,7 +49,7 @@ let App = React.createClass({
   render(){
     return (
       <div>
-        <AppBar style={{'backgroundColor': '#e52d27', 'zIndex': 50, 'position': 'relative' }} title='Youtube Playlists' onLeftIconButtonTouchTap={this.openSearchBar} iconClassNameRight="muidocs-icon-navigation-expand-more"/>
+        <AppBar style={{'backgroundColor': '#e52d27', 'zIndex': 50, 'position': 'relative' }} title='Youtube Playlists' onLeftIconButtonTouchTap={this.toggleSearchBar} iconClassNameRight="muidocs-icon-navigation-expand-more"/>
         <Search open={this.state.searchBarOpen} refs='SearchBar'/>
         <Youtube/>
       </div>
