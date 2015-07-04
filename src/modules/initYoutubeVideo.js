@@ -13,7 +13,7 @@ export default function initYoutubeVideo(videoId) {
 	   		player.id = 'player';
 	  let $wrapper = document.querySelector('.playerWrapper');
 	  //Append the player to the wrapper
-	  //
+	  $wrapper.appendChild(player);
 	  //set up the player.
 	  let player;
 	  var done = false;
