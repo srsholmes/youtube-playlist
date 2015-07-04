@@ -8,12 +8,12 @@ export default function initYoutubeVideo(videoId) {
 
   var player;
   //Need to expose the youtube video on the window when instantiating it.
-  function onYouTubeIframeAPIReady() {
+  global.onYouTubeIframeAPIReady = function() {
   	console.log('onYouTubeIframeAPIReady');
     player = new YT.Player('player', {
       height: '390',
       width: '640',
-      videoId: 'M7lc1UVf-VE',
+      videoId: videoId,
       events: {
         'onReady': onPlayerReady,
         'onStateChange': onPlayerStateChange
