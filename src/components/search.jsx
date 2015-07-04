@@ -20,7 +20,7 @@ let Search = React.createClass({
 
   overlayClick() {
   	console.log('overlay click');
-  	Actions.overlayClick();
+  	Actions.closeOverlay();
   },
 
   render() {

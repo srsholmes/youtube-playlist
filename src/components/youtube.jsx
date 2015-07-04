@@ -2,8 +2,9 @@ let React = require('react');
 let Reflux = require('reflux');
 let Actions = require('../actions/actions');
 
-//Styles
-import Styles from '../styles';
+//Custom components
+import { Player, Playlist } from './';
+
 //Stores
 let Store = require('../stores/store');
 
@@ -17,16 +18,16 @@ let Youtube = React.createClass({
     return {}
   },
 
- 	getStyles() {
-
- 	},
-
   render() {
-    var styles = this.getStyles();
     return (
-      <div className="playerWrapper" style={styles}>
-        <h3>Youtube Video here...</h3>
-      </div>
+    	<div>
+	      <div className='playerWrapper'>
+	        <Player/>
+	      </div>
+	      <div className='playistWrapper'>
+	      	<Playlist/>
+	      </div>
+	    </div>
     )
   }
 });

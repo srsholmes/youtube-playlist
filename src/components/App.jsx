@@ -12,9 +12,6 @@ let AppBar = mui.AppBar;
 //Custom components
 import { Search, Youtube } from './';
 
-//Styles
-import Styles from '../styles';
-
 //Stores
 let Store = require('../stores/store');
 

@@ -13,7 +13,7 @@ export default function initYoutubeVideo(videoId) {
 	  let player = d.createElement('div');
 	   		player.className='youtubePlayer';
 	   		player.id = 'player';
-	  let $wrapper = d.querySelector('.playerWrapper');
+	  let $wrapper = d.querySelector('.player');
 	  $wrapper.appendChild(player);
 	  let done = false;
 	  global.onYouTubeIframeAPIReady = () => {
