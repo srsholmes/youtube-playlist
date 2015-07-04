@@ -18,6 +18,11 @@ let Search = React.createClass({
     throttle(Actions.searchYoutubeApi(query), 600);
   },
 
+  overlayClick() {
+  	console.log('overlay click');
+  	Actions.overlayClick();
+  },
+
   render() {
     return (
     	<div className={this.props.open ? 'searchWrapper open' : 'searchWrapper'}>
@@ -27,7 +32,7 @@ let Search = React.createClass({
 	        <SearchResults/>
 	      </div>
 	      <div>
-	      	<div className='searchOverlay'/>
+	      	<div className='searchOverlay' onClick={this.overlayClick}/>
 	      </div>
 	    </div>
     )

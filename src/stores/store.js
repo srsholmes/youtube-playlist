@@ -12,9 +12,16 @@ let Store = Reflux.createStore({
 
   onSearchYoutubeApiCompleted(data) {
   	console.log('onsearchYoutubeApiCompleted');
-  	this.trigger({ 
-  		results: data 
+  	this.trigger({
+  		results: data
   	});
+  },
+
+  onOverlayClick(){
+  	console.log('on overlay click');
+  	this.trigger({
+      searchBarOpen: false
+    });
   }
 
 });

@@ -39,13 +39,12 @@
 	opacity: 0;
 }
 
-.list {
+.results {
 	overflow: scroll;
 	height: 100%;
-	overflow: scroll
 }
 
-.listItem {
+.resultsItem {
 	max-height:100px;
 	border-bottom:1px solid lightgrey;
 	padding: 10px 0

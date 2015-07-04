@@ -4,8 +4,7 @@ let Actions = require('../actions/actions');
 
 //Modules
 import { initYoutubeVideo } from '../modules';
-//Styles
-import Styles from '../styles';
+
 //Stores
 let Store = require('../stores/store');
 
@@ -33,29 +32,18 @@ let SearchResults = React.createClass({
     }
   },
 
-  getStyles() {
- 		return {
- 			List: Styles.list,
- 			ListItem: Styles.listItem,
- 		}
- 	},
-
  	chooseVideo(i) {
- 		console.log('Video Chosen');
- 		console.log(this.state.results.data.items[i]);
  		let videoData = this.state.results.data.items[i];
  		let videoID = videoData.id.videoId;
- 		console.log(videoID);
  		initYoutubeVideo(videoID);
  	},
 
   render() {
-  	var styles = this.getStyles();
     let results = this.state.results.data.items;
     let resultsList = results.map(function (data, i){
       console.log(data, i);
       return (
-        <ListItem style={styles.ListItem}
+        <ListItem
         	className="resultsItem"
         	onClick={this.chooseVideo.bind(data, i)}
         	secondaryText={
@@ -71,7 +59,7 @@ let SearchResults = React.createClass({
     }, this);
 
     return (
-      <List style={styles.List}>
+      <List className='results'>
         {resultsList}
       </List>
     )
