@@ -24,7 +24,7 @@ let Youtube = React.createClass({
   render() {
     var styles = this.getStyles();
     return (
-      <div id='player' style={styles}>
+      <div className="playerWrapper" style={styles}>
         <h3>Youtube Video here...</h3>
       </div>
     )
