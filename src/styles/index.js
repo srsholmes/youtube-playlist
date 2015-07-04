@@ -22,7 +22,7 @@ let Styles = {
 		top: 0,
 		bottom: 0,
 		zIndex: 25,
-		trasition: 'opacity .3s ease-in-out'
+		transition: 'opacity .3s ease-in-out'
 	},
 
 	list: {
