@@ -1,6 +1,6 @@
 let Reflux = require('reflux');
 
-import { searchYoutube, initYoutubeVideo } from '../modules';
+import { searchYoutube } from '../modules';
 
 
 let Actions = Reflux.createActions({

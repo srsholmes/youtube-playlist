@@ -12,6 +12,8 @@ let Store = require('../stores/store');
 //If video props is blank, do not render iframe
 //If there are props/the props change, render the iframe.
 
+var vPlayer;
+
 let Player = React.createClass({
 
   mixins: [
@@ -26,30 +28,44 @@ let Player = React.createClass({
   	}
   },
 
-  render() {
+  onPlayerReady(event) {
+  	console.log('onPlayerReady');
+    // event.target.playVideo();
+  },
 
+  onPlayerStateChange(event) {
+  	console.log('on player state chnaged');
+    // if (event.data == YT.PlayerState.PLAYING && !done) {
+    //   setTimeout(stopVideo, 6000);
+    //   done = true;
+    // }
+  },
+
+  render() {
   	var videoProps = this.state.videoProps;
   	console.log(videoProps);
-
-  	if( videoProps.id === undefined || videoProps.id === null ) {
-  		var vPlayer = <div>Here is an empty vPlayer div</div>
-  	} else {
-
-  		let d = document;
-  		var vPlayer = <div id="youtubeVideo"></div>;
-			global.onYouTubeIframeAPIReady = () => {
+  	if (videoProps.id === undefined || videoProps.id === null ) {
+  		global.onYouTubeIframeAPIReady = () => {
 		  	console.log('onYouTubeIframeAPIReady');
 		    vPlayer = new YT.Player('youtubeVideo', {
 		      height: '390',
 		      width: '640',
-		      videoId: videoProps.id
+		      videoId: 'M7lc1UVf-VE',
+		      events: {
+            'onReady': this.onPlayerReady,
+            'onStateChange': this.onPlayerStateChange
+          }
 		    });
   		}
+  	} else {
+			//Load in the video by ID here.
+			console.log(vPlayer);
+			vPlayer.loadVideoById("bHQqvYy5KYo", 5, "large")
   	}
 
     return (
     	<div>
-    		<div>{vPlayer}</div>
+    		<div id="youtubeVideo"></div>
       	<p videoProps={this.state.videoProps}>{this.props.videoProps}</p>
       </div>
     )

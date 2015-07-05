@@ -12,7 +12,7 @@ let AppBar = mui.AppBar;
 //Modules
 import { initYoutubeApi } from '../modules';
 
-//Get the youtube Api.
+//Start the youtube Api.
 initYoutubeApi();
 
 //Custom components

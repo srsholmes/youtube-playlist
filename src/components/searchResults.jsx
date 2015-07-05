@@ -42,7 +42,6 @@ let SearchResults = React.createClass({
   render() {
     let results = this.state.results.data.items;
     let resultsList = results.map(function (data, i){
-      console.log(data, i);
       return (
         <ListItem
         	className="resultsItem"
