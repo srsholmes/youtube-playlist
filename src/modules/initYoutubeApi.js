@@ -1,4 +1,5 @@
-export default function initYoutubeVideo(videoId) {
+export default function initYoutubeApi(videoId) {
+	console.log('init Youtube Api');
 	//Do a check here, if API, then change the ID attribute
 	//of the iframe to load in the other video
 	let d = document;
@@ -9,25 +10,25 @@ export default function initYoutubeVideo(videoId) {
 	  let firstScriptTag = d.getElementsByTagName('script')[0];
 	  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-	  //Set up the player.
-	  let player = d.createElement('div');
-	   		player.className='youtubePlayer';
-	   		player.id = 'player';
-	  let $wrapper = d.querySelector('.player');
-	  $wrapper.appendChild(player);
-	  let done = false;
-	  global.onYouTubeIframeAPIReady = () => {
-	  	console.log('onYouTubeIframeAPIReady');
-	    player = new YT.Player('player', {
-	      height: '390',
-	      width: '640',
-	      videoId: videoId,
-	      events: {
-	        'onReady': onPlayerReady,
-	        'onStateChange': onPlayerStateChange
-	      }
-	    });
-	  }
+	  // //Set up the player.
+	  // let player = d.createElement('div');
+	  // player.className='youtubePlayer';
+	  // player.id = 'player';
+	  // let $wrapper = d.querySelector('.player');
+	  // $wrapper.appendChild(player);
+	  // let done = false;
+	  // global.onYouTubeIframeAPIReady = () => {
+	  // 	console.log('onYouTubeIframeAPIReady');
+	  //   player = new YT.Player('player', {
+	  //     height: '390',
+	  //     width: '640',
+	  //     videoId: videoId,
+	  //     events: {
+	  //       'onReady': onPlayerReady,
+	  //       'onStateChange': onPlayerStateChange
+	  //     }
+	  //   });
+	  // }
 
 	  //player events
 	  let onPlayerReady = (event) => {
@@ -45,8 +46,5 @@ export default function initYoutubeVideo(videoId) {
 	  let stopVideo = () => {
 	    player.stopVideo();
 	  }
-	} else {
-		let player = d.querySelector('.youtubePlayer');
-		player.src = `https://www.youtube.com/embed/${videoId}?enablejsapi=1`
 	}
 }

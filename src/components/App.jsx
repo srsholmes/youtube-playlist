@@ -9,6 +9,12 @@ let RaisedButton = mui.RaisedButton;
 let AppBar = mui.AppBar;
 
 
+//Modules
+import { initYoutubeApi } from '../modules';
+
+//Get the youtube Api.
+initYoutubeApi();
+
 //Custom components
 import { Search, Youtube } from './';
 

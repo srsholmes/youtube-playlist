@@ -17,6 +17,14 @@ let Store = Reflux.createStore({
   	});
   },
 
+  onChooseVideo(id) {
+  	this.trigger({
+  		videoProps: {
+  			id: id
+  		}
+  	});
+  },
+
   onCloseOverlay(){
   	this.trigger({
       searchBarOpen: false

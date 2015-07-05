@@ -9,30 +9,51 @@ let Store = require('../stores/store');
 // and init a video using Actions/controlled by state
 // to allow the video to change.
 
+//If video props is blank, do not render iframe
+//If there are props/the props change, render the iframe.
 
-let Playlist = React.createClass({
+let Player = React.createClass({
 
   mixins: [
     Reflux.connect(Store)
   ],
 
   getInitialState() {
-    return {
-      results: {
-        data: {
-          items: []
-        }
-      }
-    }
+  	return{
+  		videoProps: {
+  			id: null
+  		}
+  	}
   },
 
   render() {
+
+  	var videoProps = this.state.videoProps;
+  	console.log(videoProps);
+
+  	if( videoProps.id === undefined || videoProps.id === null ) {
+  		var vPlayer = <div>Here is an empty vPlayer div</div>
+  	} else {
+
+  		let d = document;
+  		var vPlayer = <div id="youtubeVideo"></div>;
+			global.onYouTubeIframeAPIReady = () => {
+		  	console.log('onYouTubeIframeAPIReady');
+		    vPlayer = new YT.Player('youtubeVideo', {
+		      height: '390',
+		      width: '640',
+		      videoId: videoProps.id
+		    });
+  		}
+  	}
+
     return (
-    	<div className='player'>
-      	<h4>This is the player component, player comes below</h4>
+    	<div>
+    		<div>{vPlayer}</div>
+      	<p videoProps={this.state.videoProps}>{this.props.videoProps}</p>
       </div>
     )
   }
 });
 
-export default Playlist;
+export default Player;

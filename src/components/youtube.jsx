@@ -14,10 +14,6 @@ let Youtube = React.createClass({
     Reflux.connect(Store)
   ],
 
-  getInitialState() {
-    return {}
-  },
-
   render() {
     return (
     	<div>
