@@ -12,6 +12,8 @@ let Store = require('../stores/store');
 //If video props is blank, do not render iframe
 //If there are props/the props change, render the iframe.
 
+//The vPlayer has to be put here to allow it to be changed
+//ouside of the scope of the render function.
 var vPlayer;
 
 let Player = React.createClass({
@@ -28,6 +30,10 @@ let Player = React.createClass({
   	}
   },
 
+	stopVideo() {
+    vPlayer.stopVideo();
+  },
+
   onPlayerReady(event) {
   	console.log('onPlayerReady');
     // event.target.playVideo();
@@ -42,6 +48,7 @@ let Player = React.createClass({
   },
 
   render() {
+  	console.log('Player render');
   	var videoProps = this.state.videoProps;
   	console.log(videoProps);
   	if (videoProps.id === undefined || videoProps.id === null ) {
@@ -60,13 +67,12 @@ let Player = React.createClass({
   	} else {
 			//Load in the video by ID here.
 			console.log(vPlayer);
-			vPlayer.loadVideoById("bHQqvYy5KYo", 5, "large")
+			vPlayer.loadVideoById(videoProps.id, 5, 'large');
   	}
 
     return (
     	<div>
     		<div id="youtubeVideo"></div>
-      	<p videoProps={this.state.videoProps}>{this.props.videoProps}</p>
       </div>
     )
   }

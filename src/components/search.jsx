@@ -13,14 +13,17 @@ import { SearchResults } from './'
 
 let Search = React.createClass({
   _handleInputChange() {
+  	console.log('Handle input chnage');
     let query = this.refs.searchBar.getValue();
-    console.log(this.refs.searchBar.getValue());
-    throttle(Actions.searchYoutubeApi(query), 600);
+    // This throttle isnt working, find another one
+    throttle(Actions.searchYoutubeApi(query), 3000);
+    throttle(console.log(query), 3000);
+
   },
 
   overlayClick() {
   	console.log('overlay click');
-  	Actions.closeOverlay();
+  	Actions.closeSearch();
   },
 
   render() {

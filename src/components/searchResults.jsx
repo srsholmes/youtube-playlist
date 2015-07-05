@@ -35,6 +35,7 @@ let SearchResults = React.createClass({
  	chooseVideo(i) {
  		let videoData = this.state.results.data.items[i];
  		let videoID = videoData.id.videoId;
+ 		console.log('chooseVideo')
  		Actions.chooseVideo(videoID);
  		Actions.closeOverlay();
  	},
@@ -45,7 +46,7 @@ let SearchResults = React.createClass({
       return (
         <ListItem
         	className="resultsItem"
-        	onClick={this.chooseVideo.bind(data, i)}
+        	onClick={this.chooseVideo.bind(null, i)}
         	secondaryText={
             <p>
               {data.snippet.description}

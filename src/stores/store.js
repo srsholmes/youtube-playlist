@@ -12,13 +12,14 @@ let Store = Reflux.createStore({
   },
 
   onSearchYoutubeApiCompleted(data) {
-  	console.log('onsearchYoutubeApiCompleted');
+  	console.log('onsearchYoutubeApiCompleted STORE');
   	this.trigger({
   		results: data
   	});
   },
 
   onChooseVideo(id) {
+  	console.log('onChooseVideo STORE');
   	this.trigger({
   		videoProps: {
   			id: id
@@ -26,9 +27,16 @@ let Store = Reflux.createStore({
   	});
   },
 
-  onCloseOverlay(){
+//Refactor into one function to toggle the search.
+  onCloseSearch() {
   	this.trigger({
-      searchBarOpen: false
+     	searchBarOpen: false
+    });
+  },
+
+  onOpenSearch() {
+  	this.trigger({
+     	searchBarOpen: true
     });
   }
 
