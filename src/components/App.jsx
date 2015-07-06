@@ -58,10 +58,7 @@ let App = React.createClass({
 //Chnage state on the header compoentn, meaning youtube would
 //not be re rendered.
   menuClick() {
-    console.log('menuClick');
-    console.log(this.state.searchBarOpen);
     Actions.toggleSearch(this.state.searchBarOpen ? true : false);
-    // Actions.toggleSearch();
   },
 
   render(){

@@ -18,14 +18,6 @@ var vPlayer;
 
 let Player = React.createClass({
 
-  getInitialState() {
-  	return{
-  		videoProps: {
-  			id: null
-  		}
-  	}
-  },
-
 	stopVideo() {
     vPlayer.stopVideo();
   },
@@ -45,9 +37,6 @@ let Player = React.createClass({
 
   //Stop the component re-rendering if the data is the same.
   shouldComponentUpdate(nextProps) {
-    console.log('componentWillUpdate');
-    console.log(nextProps);
-    console.log(this.props);
     if (nextProps.videoData.id === this.props.videoData.id) return false;
     return true;
   },

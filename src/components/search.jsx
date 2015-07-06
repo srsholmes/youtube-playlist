@@ -12,18 +12,13 @@ let TextField = mui.TextField;
 import { SearchResults } from './'
 
 let Search = React.createClass({
+  
   _handleInputChange() {
   	console.log('Handle input chnage');
     let query = this.refs.searchBar.getValue();
     throttle(Actions.searchYoutubeApi(query), 3000);
     throttle(console.log(query), 3000);
   },
-
-  // getInitialState() {
-  //   return {
-  //     searchBarOpen: true
-  //   };
-  // },
 
   overlayClick() {
   	console.log('overlay click');

@@ -14,7 +14,7 @@ let Youtube = React.createClass({
     return (
     	<div>
 	      <div className='playerWrapper'>
-	        <Player videoData={this.props.videoData} />
+	        <Player {...this.props} />
 	      </div>
 	      <div className='playistWrapper'>
 	      	<Playlist/>
