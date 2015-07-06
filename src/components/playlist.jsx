@@ -7,20 +7,6 @@ let Store = require('../stores/store');
 
 let Playlist = React.createClass({
 
-  mixins: [
-    Reflux.connect(Store)
-  ],
-
-  getInitialState() {
-    return {
-      results: {
-        data: {
-          items: []
-        }
-      }
-    }
-  },
-
   render() {
     return (
     	<div>

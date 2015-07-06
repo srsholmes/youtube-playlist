@@ -15,7 +15,7 @@ let Search = React.createClass({
   _handleInputChange() {
   	console.log('Handle input chnage');
     let query = this.refs.searchBar.getValue();
-    throttle(Actions.searchYoutubeApi(query), 30000);
+    throttle(Actions.searchYoutubeApi(query), 3000);
     throttle(console.log(query), 3000);
   },
 
@@ -39,7 +39,7 @@ let Search = React.createClass({
 	      <div className='search' >
 	        <h3>Search...</h3>
 	        <TextField hintText="Geoff Rowley" onChange={this._handleInputChange} ref="searchBar" />
-	        <SearchResults/>
+	        <SearchResults results={this.props.results}/>
 	      </div>
 	      <div>
 	      	<div className='searchOverlay' onClick={this.overlayClick}/>

@@ -11,21 +11,21 @@ let Store = Reflux.createStore({
     console.log('store init');
   },
 
-  // onSearchYoutubeApiCompleted(data) {
-  // 	console.log('onsearchYoutubeApiCompleted STORE');
-  // 	this.trigger({
-  // 		results: data
-  // 	});
-  // },
+  onSearchYoutubeApiCompleted(data) {
+  	console.log('onsearchYoutubeApiCompleted STORE');
+  	this.trigger({
+  		results: data
+  	});
+  },
 
-  // onChooseVideo(id) {
-  // 	console.log('onChooseVideo STORE');
-  // 	this.trigger({
-  // 		videoProps: {
-  // 			id: id
-  // 		}
-  // 	});
-  // },
+  onChooseVideo(id) {
+  	console.log('onChooseVideo STORE');
+  	this.trigger({
+  		videoData: {
+  			id: id
+  		}
+  	});
+  },
 
   onToggleSearch(state){
     console.log('onToggleSearch');

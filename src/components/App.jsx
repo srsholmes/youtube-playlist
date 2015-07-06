@@ -19,6 +19,7 @@ initYoutubeApi();
 import { Search, Youtube } from './';
 
 //Only connect to the sotre once and pass down the data in props.
+////Need to pass down video data to props of Youtube, from  state. 
 
 //Stores
 let Store = require('../stores/store');
@@ -31,7 +32,15 @@ let App = React.createClass({
 
   getInitialState() {
     return {
-      searchBarOpen: true
+      searchBarOpen: true,
+      results: {
+        data: {
+          items: []
+        }
+      },
+      videoData: {
+        id: null
+      }
     };
   },
 
@@ -59,8 +68,8 @@ let App = React.createClass({
     return (
       <div>
         <AppBar style={{'backgroundColor': '#e52d27', 'zIndex': 50, 'position': 'relative' }} title='Youtube Playlists' onLeftIconButtonTouchTap={this.menuClick} iconClassNameRight="muidocs-icon-navigation-expand-more"/>
-        <Search open={this.state.searchBarOpen} refs='SearchBar'/>
-        <Youtube/>
+        <Search open={this.state.searchBarOpen} refs='SearchBar' results={this.state.results}/>
+        <Youtube videoData={this.state.videoData}/>
       </div>
     )
   }

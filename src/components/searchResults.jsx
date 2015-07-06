@@ -18,30 +18,17 @@ let Avatar = mui.Avatar;
 
 let SearchResults = React.createClass({
 
-  mixins: [
-    Reflux.connect(Store)
-  ],
-
-  getInitialState() {
-    return {
-      results: {
-        data: {
-          items: []
-        }
-      }
-    }
-  },
-
  	chooseVideo(i) {
- 		let videoData = this.state.results.data.items[i];
+ 		let videoData = this.props.results.data.items[i];
  		let videoID = videoData.id.videoId;
  		console.log('chooseVideo')
  		Actions.chooseVideo(videoID);
- 		Actions.closeOverlay();
+ 		Actions.toggleSearch(true);
  	},
 
   render() {
-    let results = this.state.results.data.items;
+    console.log(this.props.results);
+    let results = this.props.results.data.items;
     let resultsList = results.map(function (data, i){
       return (
         <ListItem

@@ -18,10 +18,6 @@ var vPlayer;
 
 let Player = React.createClass({
 
-  // mixins: [
-  //   Reflux.connect(Store)
-  // ],
-
   getInitialState() {
   	return{
   		videoProps: {
@@ -47,33 +43,37 @@ let Player = React.createClass({
     // }
   },
 
-  componentWillUpdate(nextProps, nextState) {
-    if (nextState.videoProps.id === this.state.videoProps.id) return false;
+  //Stop the component re-rendering if the data is the same.
+  shouldComponentUpdate(nextProps) {
+    console.log('componentWillUpdate');
+    console.log(nextProps);
+    console.log(this.props);
+    if (nextProps.videoData.id === this.props.videoData.id) return false;
     return true;
   },
 
   render() {
   	console.log('Player render');
-  	// var videoProps = this.state.videoProps;
-  	// console.log(videoProps);
-  	// if (videoProps.id === undefined || videoProps.id === null ) {
-  	// 	global.onYouTubeIframeAPIReady = () => {
-		 //  	console.log('onYouTubeIframeAPIReady');
-		 //    vPlayer = new YT.Player('youtubeVideo', {
-		 //      height: '390',
-		 //      width: '640',
-		 //      videoId: 'M7lc1UVf-VE',
-		 //      events: {
-   //          'onReady': this.onPlayerReady,
-   //          'onStateChange': this.onPlayerStateChange
-   //        }
-		 //    });
-  	// 	}
-  	// } else {
-			// //Load in the video by ID here.
-			// console.log(vPlayer);
-			// vPlayer.loadVideoById(videoProps.id, 5, 'large');
-  	// }
+  	var videoData = this.props.videoData;
+  	console.log(videoData);
+  	if (videoData.id === undefined || videoData.id === null ) {
+  		global.onYouTubeIframeAPIReady = () => {
+		  	console.log('onYouTubeIframeAPIReady');
+		    vPlayer = new YT.Player('youtubeVideo', {
+		      height: '390',
+		      width: '640',
+		      videoId: 'M7lc1UVf-VE',
+		      events: {
+            'onReady': this.onPlayerReady,
+            'onStateChange': this.onPlayerStateChange
+          }
+		    });
+  		}
+  	} else {
+			//Load in the video by ID here.
+			console.log(vPlayer);
+			vPlayer.loadVideoById(videoData.id, 5, 'large');
+  	}
 
     return (
     	<div>
