@@ -16,7 +16,7 @@ import { initYoutubeApi } from '../modules';
 initYoutubeApi();
 
 //Custom components
-import { Search, Youtube } from './';
+import { NavBar, Search, Youtube } from './';
 
 //Only connect to the sotre once and pass down the data in props.
 ////Need to pass down video data to props of Youtube, from  state. 
@@ -54,17 +54,10 @@ let App = React.createClass({
     };
   },
 
-//Could abstract the Appbar and menu into a header component
-//Chnage state on the header compoentn, meaning youtube would
-//not be re rendered.
-  menuClick() {
-    Actions.toggleSearch(this.state.searchBarOpen ? true : false);
-  },
-
   render(){
     return (
       <div>
-        <AppBar style={{'backgroundColor': '#e52d27', 'zIndex': 50, 'position': 'relative' }} title='Youtube Playlists' onLeftIconButtonTouchTap={this.menuClick} iconClassNameRight="muidocs-icon-navigation-expand-more"/>
+        <NavBar searchBarOpen={this.state.searchBarOpen}/>
         <Search open={this.state.searchBarOpen} refs='SearchBar' results={this.state.results}/>
         <Youtube videoData={this.state.videoData}/>
       </div>
