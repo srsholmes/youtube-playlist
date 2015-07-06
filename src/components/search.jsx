@@ -15,10 +15,8 @@ let Search = React.createClass({
   _handleInputChange() {
   	console.log('Handle input chnage');
     let query = this.refs.searchBar.getValue();
-    // This throttle isnt working, find another one
-    throttle(Actions.searchYoutubeApi(query), 3000);
+    throttle(Actions.searchYoutubeApi(query), 30000);
     throttle(console.log(query), 3000);
-
   },
 
   overlayClick() {
@@ -27,6 +25,9 @@ let Search = React.createClass({
   },
 
   render() {
+  	 //    window.addEventListener("resize", function(){console.log('resize no throttle')});
+    // window.addEventListener("resize", throttle( function(){console.log('rsize throttle')}, 2000 ));
+
     return (
     	<div className={this.props.open ? 'searchWrapper open' : 'searchWrapper'}>
 	      <div className='search' >

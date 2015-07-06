@@ -4,7 +4,7 @@ export default function throttle(fn, threshhold, scope) {
       deferTimer;
   return function () {
     var context = scope || this;
-  
+
     var now = +new Date,
         args = arguments;
     if (last && now < last + threshhold) {
