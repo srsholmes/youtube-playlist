@@ -43,12 +43,14 @@ let App = React.createClass({
     };
   },
 
+//Could abstract the Appbar and menu into a header component
+//Chnage state on the header compoentn, meaning youtube would
+//not be re rendered.
   menuClick() {
-  	if (this.state.searchBarOpen == true ) {
-  		Actions.closeSearch();
-  	} else {
-  		Actions.openSearch();
-  	}
+    // this.setState({
+    //   searchBarOpen: !this.state.searchBarOpen
+    // });
+    Actions.toggleSearch();
   },
 
   render(){

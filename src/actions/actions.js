@@ -5,8 +5,7 @@ import { searchYoutube } from '../modules';
 
 let Actions = Reflux.createActions({
   'searchYoutubeApi': { asyncResult: true },
-  'closeSearch': {},
-  'openSearch': {},
+  'toggleSearch': {},
   'chooseVideo': {},
   'initYoutubeApi':{},
   'getPlaylist': {}
