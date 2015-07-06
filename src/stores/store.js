@@ -27,10 +27,16 @@ let Store = Reflux.createStore({
   	});
   },
 
-  onToggleSearch() {
-  	console.log('On Toggle search');
-		this.trigger({
-     	searchBarOpen: !this.state.searchBarOpen
+//Refactor into one function to toggle the search.
+  onCloseSearch() {
+  	this.trigger({
+     	searchBarOpen: false
+    });
+  },
+
+  onOpenSearch() {
+  	this.trigger({
+     	searchBarOpen: true
     });
   }
 

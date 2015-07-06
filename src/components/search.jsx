@@ -19,15 +19,15 @@ let Search = React.createClass({
     throttle(console.log(query), 3000);
   },
 
-  getInitialState() {
-    return {
-      searchBarOpen: true
-    };
-  },
+  // getInitialState() {
+  //   return {
+  //     searchBarOpen: true
+  //   };
+  // },
 
   overlayClick() {
   	console.log('overlay click');
-  	Actions.toggleSearch();
+  	Actions.closeSearch();
   },
 
   render() {
@@ -35,7 +35,7 @@ let Search = React.createClass({
     // window.addEventListener("resize", throttle( function(){console.log('rsize throttle')}, 2000 ));
 
     return (
-    	<div className={this.state.searchBarOpen ? 'searchWrapper open' : 'searchWrapper'}>
+    	<div className={this.props.open ? 'searchWrapper open' : 'searchWrapper'}>
 	      <div className='search' >
 	        <h3>Search...</h3>
 	        <TextField hintText="Geoff Rowley" onChange={this._handleInputChange} ref="searchBar" />
