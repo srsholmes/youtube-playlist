@@ -18,9 +18,9 @@ var vPlayer;
 
 let Player = React.createClass({
 
-  mixins: [
-    Reflux.connect(Store)
-  ],
+  // mixins: [
+  //   Reflux.connect(Store)
+  // ],
 
   getInitialState() {
   	return{
@@ -47,32 +47,39 @@ let Player = React.createClass({
     // }
   },
 
+  componentWillUpdate(nextProps, nextState) {
+    if (nextState.videoProps.id === this.state.videoProps.id) return false;
+    return true;
+  },
+
   render() {
   	console.log('Player render');
-  	var videoProps = this.state.videoProps;
-  	console.log(videoProps);
-  	if (videoProps.id === undefined || videoProps.id === null ) {
-  		global.onYouTubeIframeAPIReady = () => {
-		  	console.log('onYouTubeIframeAPIReady');
-		    vPlayer = new YT.Player('youtubeVideo', {
-		      height: '390',
-		      width: '640',
-		      videoId: 'M7lc1UVf-VE',
-		      events: {
-            'onReady': this.onPlayerReady,
-            'onStateChange': this.onPlayerStateChange
-          }
-		    });
-  		}
-  	} else {
-			//Load in the video by ID here.
-			console.log(vPlayer);
-			vPlayer.loadVideoById(videoProps.id, 5, 'large');
-  	}
+  	// var videoProps = this.state.videoProps;
+  	// console.log(videoProps);
+  	// if (videoProps.id === undefined || videoProps.id === null ) {
+  	// 	global.onYouTubeIframeAPIReady = () => {
+		 //  	console.log('onYouTubeIframeAPIReady');
+		 //    vPlayer = new YT.Player('youtubeVideo', {
+		 //      height: '390',
+		 //      width: '640',
+		 //      videoId: 'M7lc1UVf-VE',
+		 //      events: {
+   //          'onReady': this.onPlayerReady,
+   //          'onStateChange': this.onPlayerStateChange
+   //        }
+		 //    });
+  	// 	}
+  	// } else {
+			// //Load in the video by ID here.
+			// console.log(vPlayer);
+			// vPlayer.loadVideoById(videoProps.id, 5, 'large');
+  	// }
 
     return (
     	<div>
-    		<div id="youtubeVideo"></div>
+    		<div id="youtubeVideo">
+          <h1>Youtube video here</h1>
+        </div>
       </div>
     )
   }

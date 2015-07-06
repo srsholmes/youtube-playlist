@@ -11,35 +11,34 @@ let Store = Reflux.createStore({
     console.log('store init');
   },
 
-  onSearchYoutubeApiCompleted(data) {
-  	console.log('onsearchYoutubeApiCompleted STORE');
-  	this.trigger({
-  		results: data
-  	});
-  },
+  // onSearchYoutubeApiCompleted(data) {
+  // 	console.log('onsearchYoutubeApiCompleted STORE');
+  // 	this.trigger({
+  // 		results: data
+  // 	});
+  // },
 
-  onChooseVideo(id) {
-  	console.log('onChooseVideo STORE');
-  	this.trigger({
-  		videoProps: {
-  			id: id
-  		}
-  	});
-  },
+  // onChooseVideo(id) {
+  // 	console.log('onChooseVideo STORE');
+  // 	this.trigger({
+  // 		videoProps: {
+  // 			id: id
+  // 		}
+  // 	});
+  // },
 
-//Refactor into one function to toggle the search.
-  onCloseSearch() {
-  	this.trigger({
-     	searchBarOpen: false
-    });
-  },
-
-  onOpenSearch() {
-  	this.trigger({
-     	searchBarOpen: true
-    });
+  onToggleSearch(state){
+    console.log('onToggleSearch');
+    if (state == true) {
+      this.trigger({
+        searchBarOpen: false
+      });
+    } else {
+      this.trigger({
+        searchBarOpen: true
+      });
+    }
   }
-
 });
 
 module.exports = Store;

@@ -18,6 +18,8 @@ initYoutubeApi();
 //Custom components
 import { Search, Youtube } from './';
 
+//Only connect to the sotre once and pass down the data in props.
+
 //Stores
 let Store = require('../stores/store');
 
@@ -47,9 +49,9 @@ let App = React.createClass({
 //Chnage state on the header compoentn, meaning youtube would
 //not be re rendered.
   menuClick() {
-    this.setState({
-      searchBarOpen: !this.state.searchBarOpen
-    });
+    console.log('menuClick');
+    console.log(this.state.searchBarOpen);
+    Actions.toggleSearch(this.state.searchBarOpen ? true : false);
     // Actions.toggleSearch();
   },
 

@@ -27,7 +27,7 @@ let Search = React.createClass({
 
   overlayClick() {
   	console.log('overlay click');
-  	Actions.closeSearch();
+  	Actions.toggleSearch(true);
   },
 
   render() {
