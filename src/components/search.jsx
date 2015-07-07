@@ -5,10 +5,6 @@ let Actions = require('../actions/actions');
 //Modules
 import { throttle } from '../modules';
 
-//Components
-let mui = require('material-ui');
-let ThemeManager = new mui.Styles.ThemeManager();
-let TextField = mui.TextField;
 import { SearchResults } from './'
 
 let Search = React.createClass({
