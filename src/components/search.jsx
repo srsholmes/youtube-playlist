@@ -13,9 +13,10 @@ import { SearchResults } from './'
 
 let Search = React.createClass({
   
-  _handleInputChange() {
+  _handleInputChange(event) {
   	console.log('Handle input chnage');
-    let query = this.refs.searchBar.getValue();
+    let query = event.target.value;
+    console.log(query);
     throttle(Actions.searchYoutubeApi(query), 3000);
     throttle(console.log(query), 3000);
   },
@@ -33,7 +34,10 @@ let Search = React.createClass({
     	<div className={this.props.open ? 'searchWrapper open' : 'searchWrapper'}>
 	      <div className='search' >
 	        <h3>Search...</h3>
-	        <TextField hintText="Geoff Rowley" onChange={this._handleInputChange} ref="searchBar" />
+	        <div class="input-field col s6">
+            <input placeholder="Search youtube" onChange={this._handleInputChange} type="text" class="validate" refs="searchBar"/>
+            <label for="first_name">Search youtube</label>
+          </div>
 	        <SearchResults results={this.props.results}/>
 	      </div>
 	      <div>
