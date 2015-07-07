@@ -12,7 +12,6 @@ let Search = React.createClass({
   _handleInputChange(event) {
   	console.log('Handle input chnage');
     let query = event.target.value;
-    console.log(query);
     throttle(Actions.searchYoutubeApi(query), 3000);
     throttle(console.log(query), 3000);
   },
