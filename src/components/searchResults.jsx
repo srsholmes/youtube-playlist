@@ -23,20 +23,16 @@ let SearchResults = React.createClass({
     let results = this.props.results.data.items;
     let resultsList = results.map(function (data, i){
       return (
-        <li className="resultsItem" onClick={this.chooseVideo.bind(null, i)}>
-          <div className='avatar'>
-            <img src={data.snippet.thumbnails.default.url}/>
-          </div>
-          <div className='info'>
-            <h5>{data.snippet.title}</h5>
+        <li className='collection-item avatar results-item' onClick={this.chooseVideo.bind(null, i)}>
+          <img src={data.snippet.thumbnails.default.url} className='circle'/>
+          <span className="title">{data.snippet.title}</span>
             <p>{data.snippet.description}</p>
-          </div>
         </li>
       )
     }, this);
 
     return (
-      <ul className='results'>
+      <ul className='collection results'>
         {resultsList}
       </ul>
     )

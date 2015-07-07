@@ -67,7 +67,6 @@ let Player = React.createClass({
     return (
     	<div>
     		<div id="youtubeVideo">
-          <h1>Youtube video here</h1>
         </div>
       </div>
     )

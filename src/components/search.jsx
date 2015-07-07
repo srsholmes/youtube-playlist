@@ -10,13 +10,14 @@ import { SearchResults } from './'
 function handleInputChange(event) {
   console.log('Handle input chnage');
   let query = event.target.value;
+  console.log(query);
   Actions.searchYoutubeApi(query);
 };
 
 let Search = React.createClass({
 
   componentWillMount() {
-    this.onChange = throttle(handleInputChange, 1000);
+    this.onChange = throttle(handleInputChange, 300);
   },
   
   overlayClick() {
@@ -24,18 +25,22 @@ let Search = React.createClass({
   	Actions.toggleSearch(true);
   },
 
+  onFocus() {
+    console.log('on focus');
+    //Want to toggle the 'active' class for the label.
+  },  
+
   render() {
     return (
-    	<div className={this.props.open ? 'searchWrapper open' : 'searchWrapper'}>
-	      <div className='search' >
+    	<div className={this.props.open ? 'search-wrapper open' : 'search-wrapper'}>
+	      <div className='search'>
 	        <div class="input-field col s6">
-            <input placeholder="Search youtube" onChange={this.onChange} type="text" class="validate" refs="searchBar"/>
-            <label for="first_name">Search youtube</label>
+            <input id="search_youtube" placeholder="Search youtube" type="text" onFocus={this.onFocus} className="validate" onChange={this.onChange} refs="searchBar" />
           </div>
 	        <SearchResults results={this.props.results}/>
 	      </div>
 	      <div>
-	      	<div className='searchOverlay' onClick={this.overlayClick}/>
+	      	<div className='search-overlay' onClick={this.overlayClick}/>
 	      </div>
 	    </div>
     )
