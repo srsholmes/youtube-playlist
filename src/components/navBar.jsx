@@ -22,7 +22,7 @@ let NavBar = React.createClass({
 						<ul className="right hide-on-med-and-down">
 		        	<li>
 		        		<a onClick={this.menuClick}>
-		        			<i className="material-icons left">search</i>
+		        			<i className="small material-icons">search</i>
 		        		</a>
 		        	</li>
 		        </ul>
