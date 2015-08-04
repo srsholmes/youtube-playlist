@@ -3,32 +3,60 @@ let Reflux = require('reflux');
 let Actions = require('../actions/actions');
 
 let Store = Reflux.createStore({
-//Set up multiple stores as triggers on this store affect
-//everything listening to them.
   listenables: [Actions],
 
   init() {
-    console.log('store init');
+    this.contents = {
+    	results: {
+    		data: {
+    			items: []
+    		}
+    	},
+    	videoData: {
+  			id: null
+  		},
+  		searchBarOpen: false
+    }
+  },
+
+  getInitialState() {
+    return this.contents;
   },
 
   onSearchYoutubeApiCompleted(data) {
-  	console.log('onsearchYoutubeApiCompleted STORE');
-  	this.trigger({
-  		results: data
-  	});
+  	this.contents.results = data;
+  	this.trigger(this.contents);
   },
 
   onChooseVideo(id) {
   	console.log('onChooseVideo STORE');
   	this.trigger({
+  		searchBarOpen: false,
   		videoData: {
   			id: id
-  		}
+  		},
+  		results: {
+    		data: {
+    			items: []
+    		}
+    	}
   	});
+		// this.contents.searchBarOpen = false;
+  	// this.contents.videoData.id = id;
+  	console.log(this.contents);
+  	// this.trigger(this.contents);
   },
 
+  // onChooseVideo(id, searchState) {
+  // 	this.contents.searchBarOpen = searchState;
+  // 	this.contents.videoData.id = id;
+  // 	this.trigger(this.contents);
+  // 	console.log(this.contents);
+  // },
+
   onToggleSearch(state){
-    state == true ? this.trigger({searchBarOpen: false}) : this.trigger({searchBarOpen: true})
+    state == true ? this.contents.searchBarOpen = false : this.contents.searchBarOpen = true;
+  	this.trigger(this.contents);
   }
 });
 

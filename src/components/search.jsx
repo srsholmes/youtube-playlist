@@ -8,9 +8,7 @@ import { throttle } from '../modules';
 import { SearchResults } from './'
 
 function handleInputChange(event) {
-  console.log('Handle input chnage');
   let query = event.target.value;
-  console.log(query);
   Actions.searchYoutubeApi(query);
 };
 
@@ -19,16 +17,10 @@ let Search = React.createClass({
   componentWillMount() {
     this.onChange = throttle(handleInputChange, 300);
   },
-  
+
   overlayClick() {
-  	console.log('overlay click');
   	Actions.toggleSearch(true);
   },
-
-  onFocus() {
-    console.log('on focus');
-    //Want to toggle the 'active' class for the label.
-  },  
 
   render() {
     return (
