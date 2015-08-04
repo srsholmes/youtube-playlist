@@ -30,21 +30,18 @@ let Store = Reflux.createStore({
 
   onChooseVideo(id) {
   	console.log('onChooseVideo STORE');
-  	this.trigger({
+  	this.contents = {
   		searchBarOpen: false,
   		videoData: {
   			id: id
-  		},
-  		results: {
-    		data: {
-    			items: []
-    		}
-    	}
-  	});
-		// this.contents.searchBarOpen = false;
-  	// this.contents.videoData.id = id;
+  		}
+  	}
+  	//Why doesnt this work?
+  	// this.contents.searchBarOpen = false;
+  	this.contents.videoData.id = id;
+
+  	this.trigger(this.contents);
   	console.log(this.contents);
-  	// this.trigger(this.contents);
   },
 
   // onChooseVideo(id, searchState) {
