@@ -12,18 +12,13 @@ let Player = React.createClass({
     vPlayer.stopVideo();
   },
 
-  // onPlayerReady(event) {
-  // 	console.log('onPlayerReady');
-  //   // event.target.playVideo();
-  // },
+  onPlayerReady(event) {
+  	console.log('onPlayerReady');
+  },
 
-  // onPlayerStateChange(event) {
-  // 	console.log('on player state chnaged');
-  //   // if (event.data == YT.PlayerState.PLAYING && !done) {
-  //   //   setTimeout(stopVideo, 6000);
-  //   //   done = true;
-  //   // }
-  // },
+  onPlayerStateChange(event) {
+  	console.log('on player state chnaged');
+  },
 
   //Stop the component re-rendering if the data is the same.
   shouldComponentUpdate(nextProps) {
@@ -49,8 +44,6 @@ let Player = React.createClass({
 		    });
   		}
   	} else {
-			//Load in the video by ID here.
-			console.log(vPlayer);
 			vPlayer.loadVideoById(videoData.id, 5, 'large');
   	}
 

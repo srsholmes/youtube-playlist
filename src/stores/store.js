@@ -29,7 +29,7 @@ let Store = Reflux.createStore({
   	this.trigger(this.contents);
   },
 
-  onChooseVideo(id) {
+  onChooseVideo(videoId) {
   	console.log('onChooseVideo STORE');
   	// this.contents = {
   	// 	searchBarOpen: false,
@@ -40,7 +40,7 @@ let Store = Reflux.createStore({
   	// }
   	//Why doesnt this work?
   	this.contents.searchBarOpen = false;
-  	this.contents.videoData.id = id;
+  	this.contents.videoData.id = videoId;
 
   	this.trigger(this.contents);
   },

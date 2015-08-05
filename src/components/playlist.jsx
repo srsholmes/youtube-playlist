@@ -26,7 +26,7 @@ let Playlist = React.createClass({
     	<div>
 	    	<h4>Playlist:</h4>
 	    	<ul className='collection results'>
-	      	{playlist}
+	      	{ playlist }
 	      </ul>
       </div>
     )
