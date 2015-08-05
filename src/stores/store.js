@@ -3,6 +3,12 @@ let Reflux = require('reflux');
 let Actions = require('../actions/actions');
 let Immutable = require('immutable');
 
+//Set up localstorage
+var a = [];
+var localStorageKey = 'youtubePlaylist';
+a.push(JSON.parse(localStorage.getItem(localStorageKey)));
+localStorage.setItem(localStorageKey, JSON.stringify(a));
+
 let Store = Reflux.createStore({
   listenables: [Actions],
 
@@ -17,7 +23,7 @@ let Store = Reflux.createStore({
   			id: null
   		},
   		searchBarOpen: false,
-  		playlist: []
+  		playlist: JSON.parse(localStorage.getItem(localStorageKey)) || []
     }
   },
 
@@ -32,22 +38,6 @@ let Store = Reflux.createStore({
 
 
   onChooseVideo(videoId) {
-  	console.log('onChooseVideo STORE');
-  	// this.contents = {
-  	// 	searchBarOpen: false,
-  	// 	videoData: {
-  	// 		id: id
-  	// 	},
-  	// 	playlist: []
-  	// }
-  	//Why doesnt this work?
-  	//May need to use https://facebook.github.io/immutable-js/
-    ///https://facebook.github.io/react/docs/advanced-performance.html/
-  	// this.contents.searchBarOpen = false;
-  	// this.contents.videoData.id = videoId;
-
-    //Create a copy of the this.contents and send that over using immutable.
-    //
     var map = Immutable.Map({
       videoData: {
         id: videoId
@@ -56,6 +46,14 @@ let Store = Reflux.createStore({
     });
     var copy = map.merge(this.contents, map).toJS();
   	this.trigger(copy);
+  },
+
+  _updatePlaylist(item) {
+    a = JSON.parse(localStorage.getItem(localStorageKey));
+    a.push(item);
+    localStorage.setItem(localStorageKey, JSON.stringify(a));
+    console.log('updated local stroage');
+
   },
 
   onAddToPlaylist(data) {
@@ -68,6 +66,7 @@ let Store = Reflux.createStore({
   		thumbnails: thumbnail
   	};
   	this.contents.playlist.push(playlistItem);
+    this._updatePlaylist(playlistItem);
   	this.trigger(this.contents);
   },
 
