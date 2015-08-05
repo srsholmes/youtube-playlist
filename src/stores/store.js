@@ -57,11 +57,10 @@ let Store = Reflux.createStore({
     a = JSON.parse(localStorage.getItem(localStorageKey));
     a.push(item);
     localStorage.setItem(localStorageKey, JSON.stringify(a));
-    console.log('updated local stroage');
-
   },
 
   onAddToPlaylist(data) {
+    //Refactor this with es6 lovilness 
   	let videoID = data.id.videoId;
   	let title = data.snippet.title;
   	let thumbnail = data.snippet.thumbnails.medium.url;
