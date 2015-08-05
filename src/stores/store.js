@@ -1,32 +1,49 @@
 let React = require('react');
 let Reflux = require('reflux');
 let Actions = require('../actions/actions');
+let Immutable = require('immutable');
+
+let AppData = Immutable.Map({
+  results: {
+    data: {
+      items: []
+    }
+  },
+  videoData: {
+    id: null
+  },
+  searchBarOpen: false,
+  playlist: []
+});
+
 
 let Store = Reflux.createStore({
   listenables: [Actions],
 
   init() {
-    this.contents = {
-    	results: {
-    		data: {
-    			items: []
-    		}
-    	},
-    	videoData: {
-  			id: null
-  		},
-  		searchBarOpen: false,
-  		playlist: []
-    }
+    // this.contents = Immutable.Map({
+    // 	results: {
+    // 		data: {
+    // 			items: []
+    // 		}
+    // 	},
+    // 	videoData: {
+  		// 	id: null
+  		// },
+  		// searchBarOpen: false,
+  		// playlist: []
+    // });
   },
 
   getInitialState() {
-    return this.contents;
+    return AppData.toJS();
   },
 
   onSearchYoutubeApiCompleted(data) {
-  	this.contents.results = data;
-  	this.trigger(this.contents);
+    var copy = AppData.set('results', data).toJS();
+    console.log(copy);
+  	// this.contents.results = data;
+  	this.trigger(copy);
   },
 
 
@@ -61,8 +78,8 @@ let Store = Reflux.createStore({
   },
 
   onToggleSearch(state) {
-    state == true ? this.contents.searchBarOpen = false : this.contents.searchBarOpen = true;
-  	this.trigger(this.contents);
+    var copy = AppData.set('searchBarOpen', !state).toJS();
+    this.trigger(copy);
   }
 });
 

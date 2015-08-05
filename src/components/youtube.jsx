@@ -23,8 +23,9 @@ let Player = React.createClass({
   shouldComponentUpdate(nextProps) {
   	//the toJSON is needed to compare the diff in the objects,
   	//without it, react compares the object reference not the value.
-  	if ( nextProps.videoData.id === null ) return false;
-    if (nextProps.videoData.toJSON() === this.props.videoData.toJSON()) return false;
+    console.log(nextProps);
+    console.log(this.props);
+    if (nextProps.videoData.id === this.props.videoData.id) return false;
     return true;
   },
 

@@ -26,7 +26,7 @@ let Search = React.createClass({
     return (
     	<div className={this.props.open ? 'search-wrapper open' : 'search-wrapper'}>
 	      <div className='search'>
-	        <div class="input-field col s6">
+	        <div className="input-field col s6">
             <input id="search_youtube" placeholder="Search youtube" type="text" onFocus={this.onFocus} className="validate" onChange={this.onChange} refs="searchBar" />
           </div>
 	        <SearchResults results={this.props.results}/>

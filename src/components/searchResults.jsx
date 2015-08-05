@@ -18,6 +18,7 @@ let SearchResults = React.createClass({
   },
 
   render() {
+    console.log(this.props);
     let results = this.props.results.data.items;
     let resultsList = results.map(function (data, i){
       return (
@@ -25,7 +26,7 @@ let SearchResults = React.createClass({
           <img src={data.snippet.thumbnails.default.url} className='circle'/>
           <a onClick={this.addToPlaylist.bind(null, i)} className="add-to-playlist"></a>
           <span onClick={this.chooseVideo.bind(null, i)} className="title">{data.snippet.title}</span>
-            <p>{data.snippet.description}</p>
+          <p>{data.snippet.description}</p>
         </li>
       )
     }, this);
