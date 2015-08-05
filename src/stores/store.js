@@ -29,6 +29,7 @@ let Store = Reflux.createStore({
   	this.trigger(this.contents);
   },
 
+
   onChooseVideo(videoId) {
   	console.log('onChooseVideo STORE');
   	// this.contents = {
@@ -39,6 +40,7 @@ let Store = Reflux.createStore({
   	// 	playlist: []
   	// }
   	//Why doesnt this work?
+  	//May need to use https://facebook.github.io/immutable-js/
   	this.contents.searchBarOpen = false;
   	this.contents.videoData.id = videoId;
 

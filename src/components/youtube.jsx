@@ -20,9 +20,12 @@ let Player = React.createClass({
   	console.log('on player state chnaged');
   },
 
-  //Stop the component re-rendering if the data is the same.
   shouldComponentUpdate(nextProps) {
-    if (nextProps.videoData.id === this.props.videoData.id) return false;
+  	console.log(nextProps);
+  	console.log(JSON.stringify(nextProps.videoData.id));
+  	//the toJSON is needed to compare the diff in the objects,
+  	//without it, react compares the object reference not the value.
+    if (JSON.stringify(nextProps.videoData.id) === JSON.stringify(this.props.videoData.id)) return false;
     return true;
   },
 
@@ -44,7 +47,7 @@ let Player = React.createClass({
 		    });
   		}
   	} else {
-			vPlayer.loadVideoById(videoData.id, 5, 'large');
+			vPlayer.loadVideoById(videoData.id, 0, 'large');
   	}
 
     return (
