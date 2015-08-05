@@ -13,26 +13,20 @@ let Player = React.createClass({
   },
 
   onPlayerReady(event) {
-  	console.log('onPlayerReady');
+  	// console.log('onPlayerReady');
   },
 
   onPlayerStateChange(event) {
-  	console.log('on player state chnaged');
+  	// console.log('on player state chnaged');
   },
 
   shouldComponentUpdate(nextProps) {
-  	//the toJSON is needed to compare the diff in the objects,
-  	//without it, react compares the object reference not the value.
-    console.log(nextProps);
-    console.log(this.props);
     if (nextProps.videoData.id === this.props.videoData.id) return false;
     return true;
   },
 
   render() {
-  	// console.log('Player render');
   	var videoData = this.props.videoData;
-  	// console.log(videoData);
   	if (videoData.id === undefined || videoData.id === null ) {
   		global.onYouTubeIframeAPIReady = () => {
 		  	console.log('onYouTubeIframeAPIReady');

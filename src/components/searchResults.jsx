@@ -18,7 +18,6 @@ let SearchResults = React.createClass({
   },
 
   render() {
-    console.log(this.props);
     let results = this.props.results.data.items;
     let resultsList = results.map(function (data, i){
       return (
