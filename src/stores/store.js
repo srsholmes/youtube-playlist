@@ -3,47 +3,31 @@ let Reflux = require('reflux');
 let Actions = require('../actions/actions');
 let Immutable = require('immutable');
 
-let AppData = Immutable.Map({
-  results: {
-    data: {
-      items: []
-    }
-  },
-  videoData: {
-    id: null
-  },
-  searchBarOpen: false,
-  playlist: []
-});
-
-
 let Store = Reflux.createStore({
   listenables: [Actions],
 
   init() {
-    // this.contents = Immutable.Map({
-    // 	results: {
-    // 		data: {
-    // 			items: []
-    // 		}
-    // 	},
-    // 	videoData: {
-  		// 	id: null
-  		// },
-  		// searchBarOpen: false,
-  		// playlist: []
-    // });
+    this.contents = {
+    	results: {
+    		data: {
+    			items: []
+    		}
+    	},
+    	videoData: {
+  			id: null
+  		},
+  		searchBarOpen: false,
+  		playlist: []
+    }
   },
 
   getInitialState() {
-    return AppData.toJS();
+    return this.contents;
   },
 
   onSearchYoutubeApiCompleted(data) {
-    var copy = AppData.set('results', data).toJS();
-    console.log(copy);
-  	// this.contents.results = data;
-  	this.trigger(copy);
+  	this.contents.results = data;
+  	this.trigger(this.contents);
   },
 
 
@@ -58,10 +42,21 @@ let Store = Reflux.createStore({
   	// }
   	//Why doesnt this work?
   	//May need to use https://facebook.github.io/immutable-js/
-  	this.contents.searchBarOpen = false;
-  	this.contents.videoData.id = videoId;
+  	// this.contents.searchBarOpen = false;
+  	// this.contents.videoData.id = videoId;
 
-  	this.trigger(this.contents);
+    //Create a copy of the this.contents and send that over using immutable. 
+    var map = Immutable.Map({
+      videoData: {
+        id: videoId
+      },
+      searchBarOpen: false,
+    });
+
+    var copy = map.merge(map, this.contents);
+    console.log(copy.toJS());
+
+  	this.trigger(copy.toJS());
   },
 
   onAddToPlaylist(data) {
@@ -78,8 +73,8 @@ let Store = Reflux.createStore({
   },
 
   onToggleSearch(state) {
-    var copy = AppData.set('searchBarOpen', !state).toJS();
-    this.trigger(copy);
+    state == true ? this.contents.searchBarOpen = false : this.contents.searchBarOpen = true;
+  	this.trigger(this.contents);
   }
 });
 
