@@ -15,7 +15,8 @@ let Store = Reflux.createStore({
     	videoData: {
   			id: null
   		},
-  		searchBarOpen: false
+  		searchBarOpen: false,
+  		playlist: []
     }
   },
 
@@ -30,28 +31,34 @@ let Store = Reflux.createStore({
 
   onChooseVideo(id) {
   	console.log('onChooseVideo STORE');
-  	this.contents = {
-  		searchBarOpen: false,
-  		videoData: {
-  			id: id
-  		}
-  	}
+  	// this.contents = {
+  	// 	searchBarOpen: false,
+  	// 	videoData: {
+  	// 		id: id
+  	// 	},
+  	// 	playlist: []
+  	// }
   	//Why doesnt this work?
-  	// this.contents.searchBarOpen = false;
+  	this.contents.searchBarOpen = false;
   	this.contents.videoData.id = id;
 
   	this.trigger(this.contents);
-  	console.log(this.contents);
   },
 
-  // onChooseVideo(id, searchState) {
-  // 	this.contents.searchBarOpen = searchState;
-  // 	this.contents.videoData.id = id;
-  // 	this.trigger(this.contents);
-  // 	console.log(this.contents);
-  // },
+  onAddToPlaylist(data) {
+  	let videoID = data.id.videoId;
+  	let title = data.snippet.title;
+  	let thumbnail = data.snippet.thumbnails.medium.url;
+  	let playlistItem = {
+  		videoID: videoID,
+  		title: title,
+  		thumbnails: thumbnail
+  	};
+  	this.contents.playlist.push(playlistItem);
+  	this.trigger(this.contents);
+  },
 
-  onToggleSearch(state){
+  onToggleSearch(state) {
     state == true ? this.contents.searchBarOpen = false : this.contents.searchBarOpen = true;
   	this.trigger(this.contents);
   }

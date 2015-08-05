@@ -9,7 +9,7 @@ import { initYoutubeApi } from '../modules';
 initYoutubeApi();
 
 //Custom components
-import { NavBar, Search, Youtube } from './';
+import { NavBar, Search, Youtube, Playlist } from './';
 
 //Stores
 let Store = require('../stores/store');
@@ -26,6 +26,7 @@ let App = React.createClass({
         <NavBar searchBarOpen={this.state.searchBarOpen}/>
         <Search open={this.state.searchBarOpen} refs='SearchBar' results={this.state.results}/>
         <Youtube videoData={this.state.videoData}/>
+        <Playlist playlist={this.state.playlist}/>
       </div>
     )
   }

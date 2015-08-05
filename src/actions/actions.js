@@ -7,6 +7,7 @@ let Actions = Reflux.createActions({
   'searchYoutubeApi': { asyncResult: true },
   'toggleSearch': {},
   'chooseVideo': {},
+  'addToPlaylist':{},
   'initYoutubeApi':{},
   'getPlaylist': {}
 });
