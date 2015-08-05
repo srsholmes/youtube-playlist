@@ -54,7 +54,7 @@ let Store = Reflux.createStore({
       },
       searchBarOpen: false,
     });
-    var copy = map.merge(this.contens, map).toJS();
+    var copy = map.merge(this.contents, map).toJS();
   	this.trigger(copy);
   },
 
