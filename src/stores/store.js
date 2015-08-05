@@ -4,10 +4,15 @@ let Actions = require('../actions/actions');
 let Immutable = require('immutable');
 
 //Set up localstorage
-var a = [];
+var a;
 var localStorageKey = 'youtubePlaylist';
-a.push(JSON.parse(localStorage.getItem(localStorageKey)));
+if (localStorage.getItem(localStorageKey) === null) {
+  a = [];
+} else {
+  a = JSON.parse(localStorage.getItem(localStorageKey));
+}
 localStorage.setItem(localStorageKey, JSON.stringify(a));
+a.push(JSON.parse(localStorage.getItem(localStorageKey)));
 
 let Store = Reflux.createStore({
   listenables: [Actions],
