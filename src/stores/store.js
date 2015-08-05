@@ -46,7 +46,8 @@ let Store = Reflux.createStore({
   	// this.contents.searchBarOpen = false;
   	// this.contents.videoData.id = videoId;
 
-    //Create a copy of the this.contents and send that over using immutable. 
+    //Create a copy of the this.contents and send that over using immutable.
+    //
     var map = Immutable.Map({
       videoData: {
         id: videoId
@@ -54,7 +55,7 @@ let Store = Reflux.createStore({
       searchBarOpen: false,
     });
     var copy = map.merge(this.contens, map).toJS();
-  	this.trigger(copy.toJS());
+  	this.trigger(copy);
   },
 
   onAddToPlaylist(data) {
