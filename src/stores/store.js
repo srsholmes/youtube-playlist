@@ -42,6 +42,7 @@ let Store = Reflux.createStore({
   	// }
   	//Why doesnt this work?
   	//May need to use https://facebook.github.io/immutable-js/
+    ///https://facebook.github.io/react/docs/advanced-performance.html/
   	// this.contents.searchBarOpen = false;
   	// this.contents.videoData.id = videoId;
 
@@ -52,10 +53,7 @@ let Store = Reflux.createStore({
       },
       searchBarOpen: false,
     });
-
-    var copy = map.merge(map, this.contents);
-    console.log(copy.toJS());
-
+    var copy = map.merge(this.contens, map).toJS();
   	this.trigger(copy.toJS());
   },
 
