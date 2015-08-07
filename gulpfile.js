@@ -10,7 +10,9 @@ var gulp = require('gulp'),
 
 gulp.task('scripts', function() {
     return browserify({ debug: true })
-        .transform(babelify)
+        .transform(babelify.configure({
+          stage: 0
+        }))
         .transform({
             global: true,
             mangle: false
