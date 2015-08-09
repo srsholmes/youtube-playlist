@@ -3,16 +3,8 @@ let Reflux = require('reflux');
 let Actions = require('../actions/actions');
 let Immutable = require('immutable');
 
-//Set up localstorage
-var a;
-var localStorageKey = 'youtubePlaylist';
-if (localStorage.getItem(localStorageKey) === null) {
-  a = [];
-} else {
-  a = JSON.parse(localStorage.getItem(localStorageKey));
-}
-localStorage.setItem(localStorageKey, JSON.stringify(a));
-a.push(JSON.parse(localStorage.getItem(localStorageKey)));
+let a;
+let localStorageKey = 'youtubePlaylist';
 
 let Store = Reflux.createStore({
   listenables: [Actions],
@@ -31,6 +23,16 @@ let Store = Reflux.createStore({
   		playlist: JSON.parse(localStorage.getItem(localStorageKey)) || []
     }
   },
+
+	_setupLocalStorage() {
+		if (localStorage.getItem(localStorageKey) === null) {
+		  a = [];
+		} else {
+		  a = JSON.parse(localStorage.getItem(localStorageKey));
+		}
+		localStorage.setItem(localStorageKey, JSON.stringify(a));
+		a.push(JSON.parse(localStorage.getItem(localStorageKey)));
+	},
 
   getInitialState() {
     return this.contents;
@@ -60,10 +62,12 @@ let Store = Reflux.createStore({
   },
 
   onAddToPlaylist(data) {
-    //Refactor this with es6 lovilness 
+    //Refactor this with es6 lovilness
+    console.log(data);
   	let videoID = data.id.videoId;
   	let title = data.snippet.title;
   	let thumbnail = data.snippet.thumbnails.medium.url;
+
   	let playlistItem = {
   		videoID: videoID,
   		title: title,
