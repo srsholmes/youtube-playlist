@@ -12,12 +12,17 @@ let Playlist = React.createClass({
 	  Actions.chooseVideo(videoID, false);
 	},
 
+	removeFromPlaylist(i) {
+    Actions.removeFromPlaylist(i);
+  },
+
   render() {
   	let playlist = this.props.playlist.map(function (data, i){
       return (
         <li className='collection-item avatar results-item'>
           <img src={data.thumbnails} className='circle'/>
           <span onClick={this.chooseVideo.bind(null, i)} className="title">{data.title}</span>
+          <a onClick={this.removeFromPlaylist.bind(null, i)} className="remove-from-playlist"></a>
         </li>
       )
     }, this);

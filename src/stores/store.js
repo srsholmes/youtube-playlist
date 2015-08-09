@@ -3,13 +3,14 @@ let Reflux = require('reflux');
 let Actions = require('../actions/actions');
 let Immutable = require('immutable');
 
-let PLAYLIST;
+let playlist;
 const LOCAL_STORAGE_KEY = 'youtubePlaylist';
 
 let Store = Reflux.createStore({
   listenables: [Actions],
 
   init() {
+  	this._setupLocalStorage();
     this.contents = {
     	results: {
     		data: {
@@ -30,12 +31,12 @@ let Store = Reflux.createStore({
 
 	_setupLocalStorage() {
 		if (localStorage.getItem(LOCAL_STORAGE_KEY) === null) {
-		  PLAYLIST = [];
+		  playlist = [];
 		} else {
-		  PLAYLIST = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+		  playlist = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
 		}
-		localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(PLAYLIST));
-		PLAYLIST.push(JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)));
+		localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(playlist));
+		playlist.push(JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)));
 	},
 
   onSearchYoutubeApiCompleted(data) {
@@ -52,10 +53,8 @@ let Store = Reflux.createStore({
     this.trigger(this.contents);
   },
 
-  _updatePlaylist(item) {
-    PLAYLIST = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    PLAYLIST.push(item);
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(PLAYLIST));
+  _updatePlaylist(playlist) {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(playlist));
   },
 
   onAddToPlaylist(data) {
@@ -66,8 +65,20 @@ let Store = Reflux.createStore({
   		}
   	};
   	this.contents.playlist.push(playlistItem);
-    this._updatePlaylist(playlistItem);
+    this._updatePlaylist(this.contents.playlist);
   	this.trigger(this.contents);
+  },
+
+  onRemoveFromPlaylist(item) {
+  	console.log('remove from playlust');
+  	console.log(item);
+  	playlist = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+  	var index = playlist.indexOf(item);
+  	if (index > -1) {
+  	  playlist.splice(index, 1);
+  	}
+  	//remove the item from local storage. maybe use arry reduce?
+  	//dont forget to set the new playlist in local storage.
   },
 
   onToggleSearch(state) {
