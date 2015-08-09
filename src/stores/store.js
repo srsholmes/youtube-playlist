@@ -3,8 +3,8 @@ let Reflux = require('reflux');
 let Actions = require('../actions/actions');
 let Immutable = require('immutable');
 
-let a;
-let localStorageKey = 'youtubePlaylist';
+let PLAYLIST;
+const LOCAL_STORAGE_KEY = 'youtubePlaylist';
 
 let Store = Reflux.createStore({
   listenables: [Actions],
@@ -20,55 +20,50 @@ let Store = Reflux.createStore({
   			id: null
   		},
   		searchBarOpen: false,
-  		playlist: JSON.parse(localStorage.getItem(localStorageKey)) || []
+  		playlist: JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || []
     }
   },
-
-	_setupLocalStorage() {
-		if (localStorage.getItem(localStorageKey) === null) {
-		  a = [];
-		} else {
-		  a = JSON.parse(localStorage.getItem(localStorageKey));
-		}
-		localStorage.setItem(localStorageKey, JSON.stringify(a));
-		a.push(JSON.parse(localStorage.getItem(localStorageKey)));
-	},
 
   getInitialState() {
     return this.contents;
   },
+
+	_setupLocalStorage() {
+		if (localStorage.getItem(LOCAL_STORAGE_KEY) === null) {
+		  PLAYLIST = [];
+		} else {
+		  PLAYLIST = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+		}
+		localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(PLAYLIST));
+		PLAYLIST.push(JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)));
+	},
 
   onSearchYoutubeApiCompleted(data) {
   	this.contents.results = data;
   	this.trigger(this.contents);
   },
 
-
   onChooseVideo(videoId) {
     this.contents = {...this.contents, ...{
-      videoData: {id: videoId},
-      searchBarOpen: false
-    }}
+      	videoData: {id: videoId},
+      	searchBarOpen: false
+    	}
+  	}
     this.trigger(this.contents);
   },
 
   _updatePlaylist(item) {
-    a = JSON.parse(localStorage.getItem(localStorageKey));
-    a.push(item);
-    localStorage.setItem(localStorageKey, JSON.stringify(a));
+    PLAYLIST = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    PLAYLIST.push(item);
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(PLAYLIST));
   },
 
   onAddToPlaylist(data) {
-    //Refactor this with es6 lovilness
-    console.log(data);
-  	let videoID = data.id.videoId;
-  	let title = data.snippet.title;
-  	let thumbnail = data.snippet.thumbnails.medium.url;
-
-  	let playlistItem = {
-  		videoID: videoID,
-  		title: title,
-  		thumbnails: thumbnail
+  	let playlistItem = {...data, ...{
+  			videoID: data.id.videoId,
+  			title:  data.snippet.title,
+  			thumbnails: data.snippet.thumbnails.medium.url
+  		}
   	};
   	this.contents.playlist.push(playlistItem);
     this._updatePlaylist(playlistItem);

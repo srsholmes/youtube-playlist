@@ -21,7 +21,7 @@ let Player = React.createClass({
   },
 
   shouldComponentUpdate(nextProps) {
-    return newProps.videoData.id !== this.props.videoData.id
+    return nextProps.videoData.id !== this.props.videoData.id
   },
 
   render() {
