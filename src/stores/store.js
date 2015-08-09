@@ -45,14 +45,11 @@ let Store = Reflux.createStore({
 
 
   onChooseVideo(videoId) {
-    var map = Immutable.Map({
-      videoData: {
-        id: videoId
-      },
-      searchBarOpen: false,
-    });
-    var copy = map.merge(this.contents, map).toJS();
-  	this.trigger(copy);
+    this.contents = {...this.contents, ...{
+      videoData: {id: videoId},
+      searchBarOpen: false
+    }}
+    this.trigger(this.contents);
   },
 
   _updatePlaylist(item) {
