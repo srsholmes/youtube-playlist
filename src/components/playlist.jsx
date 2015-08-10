@@ -13,8 +13,7 @@ let Playlist = React.createClass({
 	},
 
 	removeFromPlaylist(i) {
-    var videoID = this.props.playlist[i].videoID;
-    Actions.removeFromPlaylist(videoID);
+    Actions.removeFromPlaylist(i);
   },
 
   render() {
