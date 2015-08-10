@@ -72,11 +72,7 @@ let Store = Reflux.createStore({
   onRemoveFromPlaylist(videoID) {
   	playlist = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));   
     playlist = playlist.filter(function(obj) {
-      if (obj.videoID === videoID) {
-        return false;
-      } else {
-        return true;
-      }
+      return obj.videoID === videoID ? false : true;
     });
     this.contents.playlist = playlist;
     this._updatePlaylist(this.contents.playlist);
