@@ -8,12 +8,13 @@ let Store = require('../stores/store');
 let Playlist = React.createClass({
 
 	chooseVideo(i) {
-	  let videoID = this.props.playlist[i].videoID;
+	  var videoID = this.props.playlist[i].videoID;
 	  Actions.chooseVideo(videoID, false);
 	},
 
 	removeFromPlaylist(i) {
-    Actions.removeFromPlaylist(i);
+    var videoID = this.props.playlist[i].videoID;
+    Actions.removeFromPlaylist(videoID);
   },
 
   render() {

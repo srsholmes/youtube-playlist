@@ -44,9 +44,9 @@ let Store = Reflux.createStore({
   	this.trigger(this.contents);
   },
 
-  onChooseVideo(videoId) {
+  onChooseVideo(videoID) {
     this.contents = {...this.contents, ...{
-      	videoData: {id: videoId},
+      	videoData: {id: videoID},
       	searchBarOpen: false
     	}
   	}
@@ -69,16 +69,18 @@ let Store = Reflux.createStore({
   	this.trigger(this.contents);
   },
 
-  onRemoveFromPlaylist(item) {
-  	console.log('remove from playlust');
-  	console.log(item);
-  	playlist = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-  	var index = playlist.indexOf(item);
-  	if (index > -1) {
-  	  playlist.splice(index, 1);
-  	}
-  	//remove the item from local storage. maybe use arry reduce?
-  	//dont forget to set the new playlist in local storage.
+  onRemoveFromPlaylist(videoID) {
+  	playlist = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));   
+    playlist = playlist.filter(function(obj) {
+      if (obj.videoID === videoID) {
+        return false;
+      } else {
+        return true;
+      }
+    });
+    this.contents.playlist = playlist;
+    this._updatePlaylist(this.contents.playlist);
+    this.trigger(this.contents);
   },
 
   onToggleSearch(state) {
