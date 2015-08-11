@@ -17,9 +17,12 @@ let Store = Reflux.createStore({
     			items: []
     		}
     	},
-    	videoData: {
-  			id: JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))[0].id.videoId || null
-  		},
+    // 	videoData: {
+  		// 	id: JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))[0].id.videoId || null
+  		// },
+      videoData: {
+        id: null
+      }, 
   		searchBarOpen: false,
   		playlist: JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || []
     }
