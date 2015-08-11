@@ -19,7 +19,7 @@ let Playlist = React.createClass({
   render() {
   	let playlist = this.props.playlist.map(function (data, i){
       return (
-        <li className="collection-item avatar results-item">
+        <li className="collection-item avatar results-item closed">
           <img src={data.thumbnails} className='circle'/>
           <span onClick={this.chooseVideo.bind(null, i)} className="title">{data.title}</span>
           <a onClick={this.removeFromPlaylist.bind(null, i)} className="remove-from-playlist"></a>
@@ -29,8 +29,8 @@ let Playlist = React.createClass({
 
     return (
     	<div>
-	    	<h4>Playlist:</h4>
-	    	<ul className="collection results">
+	    	<p>Playlist:</p>
+	    	<ul className="collection results playlist">
 	      	{ playlist }
 	      </ul>
       </div>

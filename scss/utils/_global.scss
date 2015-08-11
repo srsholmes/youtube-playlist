@@ -55,13 +55,23 @@ a {
 	}
 }
 
-// #youtubeVideo {
-//   width: 100%;
-//   height: auto;
-//   position: relative;
-//   max-width: 600px;
-//   margin: auto;
-// }
+ul.playlist {
+	.collection-item.avatar {
+		&.closed {
+			height: 40px;
+			min-height: inherit;
+			padding-left: 50px;
+
+			img {
+				display: block;
+				height: 32px;
+				width: 32px;
+				left: 5px;
+				top: 5px;
+			}
+		}
+	}
+}
 
 .video-container {
 	position:relative;
