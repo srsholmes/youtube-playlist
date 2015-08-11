@@ -24,15 +24,15 @@ let Search = React.createClass({
 
   render() {
     return (
-    	<div className={this.props.open ? 'search-wrapper open' : 'search-wrapper'}>
-	      <div className='search'>
+    	<div className={this.props.open ? "search-wrapper open" : "search-wrapper"}>
+	      <div className="search">
 	        <div className="input-field col s6">
             <input id="search_youtube" placeholder="Search youtube" type="text" onFocus={this.onFocus} className="validate" onChange={this.onChange} refs="searchBar" />
           </div>
 	        <SearchResults results={this.props.results}/>
 	      </div>
 	      <div>
-	      	<div className='search-overlay' onClick={this.overlayClick}/>
+	      	<div className="search-overlay" onClick={this.overlayClick}/>
 	      </div>
 	    </div>
     )

@@ -169,7 +169,7 @@ nav {
   z-index: 998;
 
   nav {
-    position: fixed;
+    position: relative;
   }
 }
 @media #{$medium-and-up} {

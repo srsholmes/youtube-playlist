@@ -28,7 +28,6 @@ let Player = React.createClass({
   	var videoData = this.props.videoData;
   	if (videoData.id === undefined || videoData.id === null ) {
   		global.onYouTubeIframeAPIReady = () => {
-		  	console.log('onYouTubeIframeAPIReady');
 		    vPlayer = new YT.Player('youtubeVideo', {
 		      height: '390',
 		      width: '640',
@@ -44,9 +43,8 @@ let Player = React.createClass({
   	}
 
     return (
-    	<div>
-    		<div id="youtubeVideo">
-        </div>
+    	<div className="video-container">
+    		<div id="youtubeVideo"></div>
       </div>
     )
   }

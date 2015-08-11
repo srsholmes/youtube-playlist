@@ -11,7 +11,7 @@ let NavBar = React.createClass({
 
 	render() {
 		return (
-			<div className='navBar navbar-fixed'>
+			<div className="navBar navbar-fixed">
 				<nav>
 					<div className="nav-wrapper">
 						<a onClick={this.menuClick} className="brand-logo menu-icon">
@@ -19,13 +19,6 @@ let NavBar = React.createClass({
 								<path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
 							</svg>
 						</a>
-						<ul className="right hide-on-med-and-down">
-		        	<li>
-		        		<a onClick={this.menuClick}>
-		        			<i className="small material-icons">search</i>
-		        		</a>
-		        	</li>
-		        </ul>
 		      </div>
         </nav>
 			</div>
