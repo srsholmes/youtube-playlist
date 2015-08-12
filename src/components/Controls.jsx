@@ -16,7 +16,7 @@ let Controls = React.createClass({
 		return (
 			<div className="controls">
 				<ul>
-					<li><i onClick={this.playPause.bind(null)} className="small material-icons play_arrow">play_arrow</i></li>
+					<li><i onClick={this.playPause} className="small material-icons play_arrow">play_arrow</i></li>
 					<li><i onClick={this.skipVideo.bind(null, 'prev')} className="small material-icons skip_previous">skip_previous</i></li>
 					<li><i onClick={this.skipVideo.bind(null, 'next')} className="small material-icons skip_next">skip_next</i></li>
 				</ul>

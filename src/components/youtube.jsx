@@ -10,20 +10,21 @@ var vPlayer;
 
 let Player = React.createClass({
 
-	stopVideo() {
-    vPlayer.stopVideo();
-  },
-
   onPlayerReady(event) {
   	// console.log('onPlayerReady');
   },
 
   onPlayerStateChange(event) {
-  	// console.log('on player state chnaged');
+  	console.log('on player state chnaged');
+  },
+
+  componentWillReceiveProps(nextProps) {
+  	console.log(nextProps);
+  	nextProps.videoData.playing === 'true' ? vPlayer.playVideo() : vPlayer.pauseVideo();
   },
 
   shouldComponentUpdate(nextProps) {
-    return nextProps.videoData.id !== this.props.videoData.id
+    return nextProps.videoData.id !== this.props.videoData.id;
   },
 
   componentWillMount(){

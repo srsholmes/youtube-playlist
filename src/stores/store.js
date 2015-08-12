@@ -57,6 +57,8 @@ let Store = Reflux.createStore({
   },
 
   onPlayPause() {
+  	this.contents.videoData.playing = !this.contents.videoData.playing;
+  	this.trigger(this.contents);
   	console.log('play pause');
   },
 
