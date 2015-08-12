@@ -26,11 +26,21 @@ let Player = React.createClass({
 
   componentWillMount(){
   	console.log('componentWillMount');
+
+    var videoId; 
+    var playlist = JSON.parse(localStorage.getItem('youtubePlaylist'));
+
+    if (playlist.length > 0) {
+      videoId = playlist[0].id.videoId;
+    } else {
+      videoId = 'M7lc1UVf-VE';
+    }
+
 		global.onYouTubeIframeAPIReady = () => {
 	    vPlayer = new YT.Player('youtubeVideo', {
 	      height: '390',
 	      width: '640',
-	      videoId: 'M7lc1UVf-VE',
+	      videoId: videoId,
 	      events: {
           'onReady': this.onPlayerReady,
           'onStateChange': this.onPlayerStateChange

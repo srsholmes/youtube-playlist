@@ -24,7 +24,7 @@ let Store = Reflux.createStore({
   			id: null
   		},
   		searchBarOpen: false,
-  		playlist: JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || []
+  		playlist: JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
     }
   },
 
