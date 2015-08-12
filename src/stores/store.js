@@ -19,7 +19,9 @@ let Store = Reflux.createStore({
     		}
     	},
     	videoData: {
-  			id: null
+  			id: null,
+  			playing: false,
+  			playlistIndex: 0
   		},
   		searchBarOpen: false,
   		playlist: JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
@@ -54,6 +56,23 @@ let Store = Reflux.createStore({
     this.trigger(this.contents);
   },
 
+  onPlayPause() {
+  	console.log('play pause');
+  },
+
+//TOOD: Handle the begining and end of the playlist
+  onSkipVideo(dir) {
+  	let index = this.contents.videoData.playlistIndex;
+  	dir === 'next' ? index ++ : index --;
+  	let newVideoID = playlist[index].videoID;
+	  this.contents = {...this.contents, ...{
+	    	videoData: {id: newVideoID, playlistIndex: index},
+	    	searchBarOpen: false,
+	  	}
+		}
+	  this.trigger(this.contents);
+  },
+
   _updatePlaylist(playlist) {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(playlist));
   },
@@ -69,7 +88,6 @@ let Store = Reflux.createStore({
     this._updatePlaylist(this.contents.playlist);
   	this.trigger(this.contents);
   },
-
 
   onRemoveFromPlaylist(index) {
   	playlist = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));

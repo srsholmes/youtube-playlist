@@ -27,7 +27,7 @@ let Player = React.createClass({
   },
 
   componentWillMount(){
-    var videoId; 
+    var videoId;
     var playlist = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
 
     if (playlist.length > 0) {

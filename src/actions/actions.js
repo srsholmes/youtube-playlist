@@ -10,7 +10,9 @@ let Actions = Reflux.createActions({
   'addToPlaylist':{},
   'removeFromPlaylist':{},
   'initYoutubeApi':{},
-  'getPlaylist': {}
+  'getPlaylist': {},
+  'playPause':{},
+  'skipVideo':{}
 });
 
 
