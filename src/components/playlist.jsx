@@ -22,7 +22,7 @@ let Playlist = React.createClass({
         <li className="collection-item avatar results-item closed">
           <img src={data.thumbnails} className='circle'/>
           <span onClick={this.chooseVideo.bind(null, i)} className="title">{data.title}</span>
-          <a onClick={this.removeFromPlaylist.bind(null, i)} className="remove-from-playlist"></a>
+          <i onClick={this.removeFromPlaylist.bind(null, i)} className="small material-icons delete remove-from-playlist">delete</i>
         </li>
       )
     }, this);

@@ -23,7 +23,7 @@ let SearchResults = React.createClass({
       return (
         <li className="collection-item avatar results-item">
           <img src={data.snippet.thumbnails.default.url} className="circle"/>
-          <a onClick={this.addToPlaylist.bind(null, i)} className="add-to-playlist"></a>
+          <i onClick={this.addToPlaylist.bind(null, i)} className="small material-icons add playlist_add">playlist_add</i>
           <span onClick={this.chooseVideo.bind(null, i)} className="title">{data.snippet.title}</span>
           <p>{data.snippet.description}</p>
         </li>

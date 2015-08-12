@@ -8,9 +8,10 @@ let Controls = React.createClass({
 		return (
 			<div className="controls">
 				<ul>
-					<li><i class="large material-icons">insert_chart</i></li>
-					<li></li>
-					<li></li>
+					<li><i className="small material-icons play_arrow">play_arrow</i></li>
+					<li><i className="small material-icons pause">pause</i></li>
+					<li><i className="small material-icons skip_previous">skip_previous</i></li>
+					<li><i className="small material-icons skip_next">skip_next</i></li>
 				</ul>
 			</div>
 		)

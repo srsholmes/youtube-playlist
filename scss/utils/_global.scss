@@ -21,36 +21,21 @@ html, body {
 	overflow: hidden;
 }
 
-a {
-	&.add-to-playlist, &.remove-from-playlist {
+ul.playlist, .results {
+	i {
 		position: absolute;
 		right: 5px;
 		top: 5px;
-		background-color: green;
-		height: 20px;
-		width: 20px;
-		border-radius: 30px;
-		&:before {
-			content: '+';
-			font-weight: 700;
-			position: absolute;
-			top: 0px;
-			left: 0;
-			color: #fff;
-			font-size: 17px;
-			right: 0;
-			margin: auto;
-			width: 10px;
-		}
+		cursor: pointer;
 	}
+}
 
-	&.remove-from-playlist {
-		background:red;
-		&:before {
-			content: '-';
-			left: 1px;
-			font-size: 23px;
-			top: -1px;
+.results {
+	&.collection .collection-item.avatar {
+		&.results-item {
+			padding-left: 59px;
+			position: relative;
+			padding-right: 37px;
 		}
 	}
 }
