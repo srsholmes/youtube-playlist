@@ -2,6 +2,8 @@ let React = require('react');
 let Reflux = require('reflux');
 let Actions = require('../actions/actions');
 
+import { LOCAL_STORAGE_KEY } from '../constants/constants';
+
 //The vPlayer has to be put here to allow it to be changed
 //ouside of the scope of the render function.
 var vPlayer;
@@ -25,10 +27,8 @@ let Player = React.createClass({
   },
 
   componentWillMount(){
-  	console.log('componentWillMount');
-
     var videoId; 
-    var playlist = JSON.parse(localStorage.getItem('youtubePlaylist'));
+    var playlist = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
 
     if (playlist.length > 0) {
       videoId = playlist[0].id.videoId;
@@ -50,9 +50,7 @@ let Player = React.createClass({
   },
 
   render() {
-    //Do a check here to see if it the first time the component is rendered to make video
   	var videoData = this.props.videoData;
-  	console.log(videoData);
   	if (videoData.id !== null) vPlayer.loadVideoById(videoData.id, 0, 'large');
     return (
     	<div className="video-container">

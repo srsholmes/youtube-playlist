@@ -4,7 +4,8 @@ let Actions = require('../actions/actions');
 let Immutable = require('immutable');
 
 let playlist;
-const LOCAL_STORAGE_KEY = 'youtubePlaylist';
+
+import { LOCAL_STORAGE_KEY } from '../constants/constants';
 
 let Store = Reflux.createStore({
   listenables: [Actions],
@@ -17,9 +18,6 @@ let Store = Reflux.createStore({
     			items: []
     		}
     	},
-    // 	videoData: {
-  		// 	id: JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))[0].id.videoId || null
-  		// },
     	videoData: {
   			id: null
   		},
