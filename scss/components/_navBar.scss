@@ -91,10 +91,10 @@ nav {
       @include transform(translateX(-50%));
     }
 
-    @media #{$medium-and-down} {
-      left: 50%;
-      @include transform(translateX(-50%));
-    }
+    // @media #{$medium-and-down} {
+    //   left: 50%;
+    //   @include transform(translateX(-50%));
+    // }
 
     &.right {
       right: 0.5rem;
