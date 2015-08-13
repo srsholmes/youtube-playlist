@@ -63,6 +63,9 @@ let Store = Reflux.createStore({
   },
 
 //TOOD: Handle the begining and end of the playlist
+//Refactor. Instead of grabbing the 'playlistIndex', from this.contents
+//Get the actual index of the current video being played.
+//Will be more accurate.
   onSkipVideo(dir) {
   	let index = this.contents.videoData.playlistIndex;
   	dir === 'next' ? index ++ : index --;
