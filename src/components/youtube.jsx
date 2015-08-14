@@ -15,12 +15,12 @@ let Player = React.createClass({
   },
 
   onPlayerStateChange(event) {
-  	console.log('on player state chnaged');
+    //Need to handle when the user changes the state using the youtube video.
+    //eg, when user clicks play/pause on video. 
   },
 
   componentWillReceiveProps(nextProps) {
-  	console.log(nextProps);
-  	nextProps.videoData.playing === 'true' ? vPlayer.playVideo() : vPlayer.pauseVideo();
+  	nextProps.videoData.playing === true ? vPlayer.playVideo() : vPlayer.pauseVideo();
   },
 
   shouldComponentUpdate(nextProps) {
