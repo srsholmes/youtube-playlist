@@ -59,8 +59,6 @@ let Store = Reflux.createStore({
   onPlayPause() {
   	this.contents.videoData.playing = !this.contents.videoData.playing;
   	this.trigger(this.contents);
-  	console.log('play pause');
-    console.log(this.contents);
   },
 
 //TOOD: Handle the begining and end of the playlist
@@ -72,7 +70,11 @@ let Store = Reflux.createStore({
   	dir === 'next' ? index ++ : index --;
   	let newVideoID = playlist[index].videoID;
 	  this.contents = {...this.contents, ...{
-	    	videoData: {id: newVideoID, playlistIndex: index},
+	    	videoData: {
+	    		id: newVideoID,
+	    		playing: true,
+	    		playlistIndex: index
+	    	},
 	    	searchBarOpen: false,
 	  	}
 		}
