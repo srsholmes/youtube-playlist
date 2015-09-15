@@ -39,10 +39,19 @@ ul.playlist, .results {
 }
 
 .main-wrapper {
-	max-width: 900px;
 	margin: auto;
 	position: relative;
 	overflow: hidden;
+	max-width: 80%;
+  @media (max-width: $screen-sm-min) {
+		max-width: 100%;
+	}
+ //  @media (max-width: $screen-sm-med) {
+	// 	width: 40%;
+	// }
+ //  @media (min-width: $screen-sm-med and $max-width: $screen-sm-wide) {
+ //  	max-width: 900px;
+	// }
 }
 
 .results {
