@@ -12,7 +12,9 @@ html, body {
 	font-family: 'Roboto', sans-serif;
 	margin: 0;
 	padding: 0;
-	overflow: hidden;
+	&.no-scroll {
+		overflow: hidden;
+	}
 }
 
 [app] {
@@ -50,7 +52,7 @@ ul.playlist, .results {
 			padding-left: 59px;
 			position: relative;
 			padding-right: 37px;
-			background-color: white; 
+			background-color: white;
 			transition: background-color 0.2s ease-in;
 			&:hover {
 				background-color: #ECECEC;
@@ -106,7 +108,7 @@ ul.playlist {
   @media (max-width: $screen-sm-min) {
 		width: 40%;
 	}
-	
+
 	ul {
 		height: 100%;
 		vertical-align: middle;

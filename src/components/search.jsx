@@ -18,8 +18,15 @@ let Search = React.createClass({
     this.onChange = throttle(handleInputChange, 300);
   },
 
+
   overlayClick() {
   	Actions.toggleSearch(true);
+  },
+
+  componentWillReceiveProps(nextProps) {
+  	console.log(nextProps);
+  	var $html = document.documentElement;
+   	nextProps.open ? $html.classList.add('no-scroll') : $html.classList.remove('no-scroll');
   },
 
   render() {
