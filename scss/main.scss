@@ -2,8 +2,6 @@
 // @import "utils/reset";
 // @import "utils/fonts";
 
-// // Global Styles which are used accross the board.
-@import "utils/global";
 
 // //Components
 // @import "components/navBar";
@@ -47,3 +45,8 @@
 @import "components/date_picker/default.scss";
 @import "components/date_picker/default.date.scss";
 @import "components/date_picker/default.time.scss";
+
+
+
+// // Global Styles which are used accross the board.
+@import "utils/global";

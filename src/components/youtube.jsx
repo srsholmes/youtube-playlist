@@ -6,7 +6,7 @@ import { LOCAL_STORAGE_KEY } from '../constants/constants';
 
 //The vPlayer has to be put here to allow it to be changed
 //ouside of the scope of the render function.
-var vPlayer;
+let vPlayer;
 
 let Player = React.createClass({
 
@@ -16,7 +16,8 @@ let Player = React.createClass({
 
   onPlayerStateChange(event) {
     //Need to handle when the user changes the state using the youtube video.
-    //eg, when user clicks play/pause on video. 
+    //eg, when user clicks play/pause on video.
+    //
   },
 
   componentWillReceiveProps(nextProps) {
@@ -28,14 +29,10 @@ let Player = React.createClass({
   },
 
   componentWillMount(){
-    var videoId;
-    var playlist = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    let videoId;
+    let playlist = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
 
-    if (playlist.length > 0) {
-      videoId = playlist[0].id.videoId;
-    } else {
-      videoId = 'M7lc1UVf-VE';
-    }
+    playlist.length > 0 ? videoId = playlist[0].id.videoId : videoId = 'M7lc1UVf-VE';
 
 		global.onYouTubeIframeAPIReady = () => {
 	    vPlayer = new YT.Player('youtubeVideo', {
@@ -51,7 +48,7 @@ let Player = React.createClass({
   },
 
   render() {
-  	var videoData = this.props.videoData;
+  	let videoData = this.props.videoData;
   	if (videoData.id !== null) vPlayer.loadVideoById(videoData.id, 0, 'large');
     return (
     	<div className="video-container">

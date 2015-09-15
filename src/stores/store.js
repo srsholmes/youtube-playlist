@@ -49,7 +49,10 @@ let Store = Reflux.createStore({
 
   onChooseVideo(videoID) {
     this.contents = {...this.contents, ...{
-      	videoData: {id: videoID},
+      	videoData: {
+          id: videoID,
+          playing: true
+        },
       	searchBarOpen: false
     	}
   	}
@@ -58,6 +61,7 @@ let Store = Reflux.createStore({
 
   onPlayPause() {
   	this.contents.videoData.playing = !this.contents.videoData.playing;
+    this.contents.searchBarOpen = false;
   	this.trigger(this.contents);
   },
 

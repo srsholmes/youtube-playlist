@@ -17,24 +17,31 @@ let Playlist = React.createClass({
   },
 
   render() {
-  	let playlist = this.props.playlist.map(function (data, i){
-      return (
-        <li className="collection-item avatar results-item closed">
-          <img src={data.thumbnails} className='circle'/>
-          <span onClick={this.chooseVideo.bind(null, i)} className="title">{data.title}</span>
-          <i onClick={this.removeFromPlaylist.bind(null, i)} className="small material-icons delete remove-from-playlist">delete</i>
-        </li>
-      )
-    }, this);
 
-    return (
-    	<div>
-	    	<p>Playlist:</p>
-	    	<ul className="collection results playlist">
-	      	{ playlist }
-	      </ul>
-      </div>
-    )
+    if ( this.props.playlist.length == 0 ) {
+      return (
+        <div></div>
+      )
+    } else {
+      let playlist = this.props.playlist.map(function (data, i){
+        return (
+          <li className="collection-item avatar results-item closed">
+            <img src={data.thumbnails} className='circle'/>
+            <span onClick={this.chooseVideo.bind(null, i)} className="title">{data.title}</span>
+            <i onClick={this.removeFromPlaylist.bind(null, i)} className="small material-icons delete remove-from-playlist">delete</i>
+          </li>
+        )
+      }, this);
+
+      return (
+        <div>
+          <h5>Playlist:</h5>
+          <ul className="collection results playlist">
+            { playlist }
+          </ul>
+        </div>
+      )
+    }
   }
 });
 

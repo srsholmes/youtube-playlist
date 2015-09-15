@@ -25,8 +25,10 @@ let App = React.createClass({
       <div>
         <NavBar {...this.state}/>
         <Search open={this.state.searchBarOpen} results={this.state.results} refs="SearchBar" />
-        <Youtube videoData={this.state.videoData}/>
-        <Playlist playlist={this.state.playlist}/>
+        <div className="main-wrapper">
+          <Youtube videoData={this.state.videoData}/>
+          <Playlist playlist={this.state.playlist}/>
+        </div>
       </div>
     )
   }
