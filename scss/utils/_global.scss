@@ -119,8 +119,10 @@ ul.playlist {
 			i {
 				display: block;
 				font-size: 2rem;
-				top: 25%;
 				position: relative;
+			  @media (max-width: $screen-sm-min) {
+			  	top: 25%;
+				}
 			}
 		}
 	}
